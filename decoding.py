@@ -16,10 +16,10 @@ def decoding_2022(P, QM, ch1, ch2, SG, w, current_q):
         q_j = ch1[k][1]
         n_k = ch2[k][0]
         n_l = ch2[k][1]
-        #pegar o qstate atual dos qubits
+        #pegar o qubit atual dos qstates
         n_qi = current_q[q_i]
         n_qj = current_q[q_j]
-        #air of minimal paths from {𝑛(𝑞𝑖), 𝑛(𝑞𝑗)} to {𝑛𝑘, 𝑛𝑙} in 𝑄𝑀 
+        #pair of minimal paths from {𝑛(𝑞𝑖), 𝑛(𝑞𝑗)} to {𝑛𝑘, 𝑛𝑙} in 𝑄𝑀 
         path_i = MinimalPath(n_qi, n_k, QM)
         path_j = MinimalPath(n_qj, n_l, QM)
         while (n_qi!=n_k) or (n_qj!=n_l):
@@ -54,7 +54,7 @@ def decoding_2022(P, QM, ch1, ch2, SG, w, current_q):
         SGr.add_ps(n_k, n_l)
         current_q[q_i] = n_k
         current_q[q_j] = n_l
-    #insert mix in all qubits
+    #insert mix in all qubits holding a qstate
     SGr.add_mix()
     return SGr, current_q
 
