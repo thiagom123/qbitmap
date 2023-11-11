@@ -1,4 +1,10 @@
-def decoding_2022(P, QM, ch1, ch2, SG, w, current_q):
+#SGr seria o subgrafo que resolve o problema para o round r.
+#Ele salva o current qubit de cada qstate, além do current depth
+#Tem metodos para adicionar mix, swaps e p-s
+
+
+
+def decoding_2022(P, QM, ch1, ch2, SG, w):
     '''
     P: Problem instance with P rounds
     QM: (Graph/Matrix) Quantum Hardware
@@ -17,8 +23,8 @@ def decoding_2022(P, QM, ch1, ch2, SG, w, current_q):
         n_k = ch2[k][0]
         n_l = ch2[k][1]
         #pegar o qubit atual dos qstates
-        n_qi = current_q[q_i]
-        n_qj = current_q[q_j]
+        n_qi = SGr.current_qubit[q_i]
+        n_qj = SGr.current_qubit[q_j]
         #pair of minimal paths from {𝑛(𝑞𝑖), 𝑛(𝑞𝑗)} to {𝑛𝑘, 𝑛𝑙} in 𝑄𝑀 
         path_i = MinimalPath(n_qi, n_k, QM)
         path_j = MinimalPath(n_qj, n_l, QM)
@@ -52,24 +58,47 @@ def decoding_2022(P, QM, ch1, ch2, SG, w, current_q):
                 
         #insert a p-s gate on qubits {𝑛𝑘, 𝑛𝑙} (where qstates {𝑞𝑖, 𝑞𝑗} are nowhold) and update 𝑠𝑔𝑟;
         SGr.add_ps(n_k, n_l)
-        current_q[q_i] = n_k
-        current_q[q_j] = n_l
     #insert mix in all qubits holding a qstate
     SGr.add_mix()
-    return SGr, current_q
+    return SGr
+
+def ShortestPaths(G, a, b):
+    '''
+    Return all the shortest paths
+    '''
+    return []
 
 
-def SelectSwaps(sg, ps, X):
+
+def SelectSwaps(SGr, ps, X, QM):
     qi = ps[0]
     qj = ps[1]
+    #path é uma lista de listas
+    paths, dist_ij = ShortestPaths(QM, qi, qj)
     if X>=0 and X<1:
         #Meeting POint
+        z = floor(X*dist_ij)+1
+        #making distij−z moves from n(qi) towards n(qj)
+        #z −1 moves from n(qj) towards n(qi).
+        for i in range(dist_ij):
+            if(i<dist_ij-z):
+                #move n(qi) towards n(qj)
+                path = ChoosePath(paths, "start", SGr)
+                SGr.add_swaps(path[i], path[i+1])
+            else:
+                #n(qj) towards n(qi)
+                path = ChoosePath(paths, "end", SGr)
+                SGr.add_swaps(path[dist_ij-i], path[dist_ij-i-1])
 
     if X==-1:
         #EST
+        for i in range(dist_ij):
+            n_1 = paths[i]
+            n_2 = paths[dist_ij-i]
+
     return 
 
-def decoding_2023(P, QM, ch1, ch2, SG, w):
+def decoding_2023(QM, ch1, ch2, SG, w):
     '''
     P: Problem instance with P rounds
     QM: (Graph/Matrix) Quantum Hardware
@@ -80,12 +109,18 @@ def decoding_2023(P, QM, ch1, ch2, SG, w):
     '''
     SGr=SG
     n = len(ch1)
+  
     for k in n:
-        swaps = Select_Swaps
-    for sw in swaps:
-        #insert swap gate in SGr
-    #insert gate p-s(qi, qj) on qubits d(qi), d(qj) in sgr
-    #insert mix
+        #pegar o qubit atual dos qstates
+        q_i = ch1[k][0]
+        q_j = ch1[k][1]
+        swaps, [dq_i, dq_j] = Select_Swaps(SGr, ch1[k], ch2[k], QM)
+        for sw in swaps:
+            SGr.add_swaps(sw[0], sw[1])
+            #update current positions
+        #insert gate p-s(qi, qj) on qubits d(qi), d(qj) in sgr
+        SGr.add_ps(dq_i, dq_j)
+    SGr.add_mix()
 
 
     return SGr
