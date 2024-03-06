@@ -26,6 +26,7 @@ def decoding_2022(P, QM, ch1, ch2, SG, w):
         n_qi = SGr.current_qubit[q_i]
         n_qj = SGr.current_qubit[q_j]
         #pair of minimal paths from {𝑛(𝑞𝑖), 𝑛(𝑞𝑗)} to {𝑛𝑘, 𝑛𝑙} in 𝑄𝑀 
+        # Talvez tenha um problema aqui, que é nessa diferença entre o d(q_i) pro n_k
         path_i = MinimalPath(n_qi, n_k, QM)
         path_j = MinimalPath(n_qj, n_l, QM)
         while (n_qi!=n_k) or (n_qj!=n_l):
@@ -37,7 +38,7 @@ def decoding_2022(P, QM, ch1, ch2, SG, w):
             succ_j = Sucessor(n_qj, path_j)
             if [n_qi, succ_i]!=[n_qi, n_qj]:
                 n, n1 = n_qi, succ_i
-            elif [n_qi, succ_j]!=[n_qj, n_qi]:
+            elif [n_qj, succ_j]!=[n_qj, n_qi]:
                 n, n1 = n_qj, succ_j
             #if {𝑛, 𝑛′} ≠ {𝑛(𝑞𝑖), 𝑛(𝑞𝑗)} then
             #insert a 𝑠𝑤𝑎𝑝 gate on qubits {𝑛, 𝑛′} and update 𝑠𝑔𝑟;
@@ -61,6 +62,9 @@ def decoding_2022(P, QM, ch1, ch2, SG, w):
     #insert mix in all qubits holding a qstate
     SGr.add_mix()
     return SGr
+
+
+## DECODING de 2023
 
 def ShortestPaths(G, a, b):
     '''
