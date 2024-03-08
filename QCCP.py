@@ -1,45 +1,43 @@
 from pymoo.algorithms.soo.nonconvex.ga import GA
 from pymoo.optimize import minimize
+import networkx as nx
+from quantum_devices import QuantumDevices
+from QAOAjob import QAOAjob
 
 class QCCP:
     '''
     QCCP: Quantum Circuit Compilation Problem - QAOA
 
     Generalized for any QAOA problem
-
-    INPUT
-    hamiltonian: PS gates in one layer (might need MIX gates as well)
-    QM = Quantum Hardware
-    w = measured weights for the quantum machine
-    r: (int) rounds/layers
-
     '''
-    def __init__(self, hamiltonian, QM, w, r=1):
-        self.qm = QM
-        self.circuit = hamiltonian
+    
+    def __init__(self, Job, QM = 'IBM27q', w = 0):
+        '''
+        job_list: Object containing the graph, list of jobs for the machine, the problem, and more
+        QM: (str = 'IBM27q', ...) Quantum Hardware to perform the job
+        w: Current connection weights measured on the quantum device
+        r: (int) rounds/layers
+        '''
+        self.job = Job.job_list 
+        self.qubits = Job.num_of_qubits
+        self.graph = Job.graph
+        self.num_nodes = self.graph.number_of_nodes()
+        self.num_edges = self.graph.number_of_edges()
+
+        self.devices = QuantumDevices()
+        self.hardware = self.devices(QM)
+        
         self.w = w
-        self.r = r
 
-        '''
-        self.num_qubits = 
-        if (# qubits em QM) < (num_qubits):
-         error: hamiltoniana tem mais qubits que o chip escolhido, escolher outro hardware
-        '''
-
-        #self.qbitmap = assign_qubits()
-        #self.problem = generate_pymoo_problem()
-    
-    def generate_pymoo_problem(self):
-        '''
-        This will set the problem on pymoo format, (decoding scheme goes here?)
-        '''
-
-        return problem
-    
-    def assign_qubits(self):
-        # Do initial assignment of QM qubits for the hamiltonian
+        if self.num_nodes > self.hardware.number_of_nodes():
+            print("Error: Job requires more qubits than available by choosen device.")
+        
+        # Assign problem nodes to hardware qubits
+        self.qubitmap = list(zip(self.graph.nodes, self.hardware.nodes)) # Pode ser melhor usar outro método
     
     def get_machine_schedule(self, algorithm = GA):
+
+        # This is the EA search algorithm to optimize the machine schedule
         for i in range(self.r):
             self.SGr = minimize(self.problem, algorithm)
         

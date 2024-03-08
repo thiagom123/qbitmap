@@ -1,0 +1,6 @@
+
+
+ - 2024_03_06: Acho que a class QCCP tem que trabalhar apenas com listas de portas para o schedule,
+   o circuito quântico deve ser compilado por último.
+
+ - 2024_03_07: 
