@@ -23,8 +23,8 @@ def decoding_2022(P, QM, ch1, ch2, SG, w):
         n_k = ch2[k][0]
         n_l = ch2[k][1]
         #pegar o qubit atual dos qstates
-        n_qi = SGr.current_qubit[q_i]
-        n_qj = SGr.current_qubit[q_j]
+        n_qi = SGr.qubitmap[q_i]
+        n_qj = SGr.qubitmap[q_j]
         #pair of minimal paths from {𝑛(𝑞𝑖), 𝑛(𝑞𝑗)} to {𝑛𝑘, 𝑛𝑙} in 𝑄𝑀 
         # Talvez tenha um problema aqui, que é nessa diferença entre o d(q_i) pro n_k
         # Tem que analisar como vai ser calculado o minimal path
