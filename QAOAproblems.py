@@ -17,7 +17,7 @@ class QAOAmaxcut(Problem):
         fitness = self.makespan()
         out["F"] = fitness
 
-    def decoding():
+    def decoding(ch1, ch2):
         '''
         Gets ch1(x), ch2, w and more to evaluate
         '''
