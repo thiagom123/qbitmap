@@ -4,11 +4,14 @@ from networkx import shortest_path
 
 
 class QAOAmaxcut(Problem):
-    def __init__(self, num_gates, qubitmap, hardware_graph, w = 0):
+    def __init__(self, num_gates, qubitmap, hardware_graph, qubit_time, op_times = [1, 2, 3, 4], w = 0):
 
+        #Lista de 
         self.map = qubitmap
         self.w = w
         self.QM = hardware_graph
+        self.qubit_time = qubit_time
+        self.op_times = op_times
         super().__init__(n_var=num_gates, n_obj=1, n_constr=0, xl=0, xu=num_gates-1, elementwise_evaluation=True)
 
 
@@ -18,14 +21,20 @@ class QAOAmaxcut(Problem):
         '''
         fitness = self.makespan()
         out["F"] = fitness
+    
+    def makespan():
+        return fit
 
     def decoding(self, ch1, ch2, SG):
         '''
         Gets ch1(x), ch2, w and more to evaluate
+        ch1: List of duples
+        ch2: List of duples
         '''
         SGr=SG
-        n = len(ch1)
-        for k in n:
+        num_gates = self.n_var
+        #Mudar notação, trocar q pelo n
+        for k in num_gates:
             q_i, q_j = ch1[k][0], ch1[k][1]
             n_k, n_l = ch2[k][0], ch2[k][1]
             #pegar o qubit atual dos qstates
@@ -49,6 +58,7 @@ class QAOAmaxcut(Problem):
         return SGr
         
     def _calculate_minimal_paths(self, n_qi, n_qj, n_k, n_l):
+        #checar argumentos
         path_a1 = shortest_path(n_qi, n_k, self.QM)
         path_b1 = shortest_path(n_qj, n_l, self.QM)
         path_a2 = shortest_path(n_qi, n_l, self.QM)
@@ -63,38 +73,46 @@ class QAOAmaxcut(Problem):
         '''
         Get the sucessors of the elements in a list, if possible
         '''
+        #Acho que tem forma melhor
         if(path_i.index(n_qi)+1<len(path_i)):
             succ_i = path_i[path_i.index(n_qi)+1]
         if(path_j.index(n_qj)+1<len(path_j)):
             succ_j = path_j[path_j.index(n_qj)+1]
-        if [n_qi, succ_i]!=[n_qi, n_qj]:
+        #if [n_qi, succ_i]!=[n_qi, n_qj]:
+        if succ_i!=n_qj:
             n, n1 = n_qi, succ_i
-        elif [n_qj, succ_j]!=[n_qj, n_qi]:
+        #elif [n_qj, succ_j]!=[n_qj, n_qi]:
+        elif succ_j!=n_qi:
             n, n1 = n_qj, succ_j
+        else:
+            n, n1 = n_qi, n_qj
 
         return n, n1
-    
-    def _add_swaps(self, n, n1):
-
-        return
-    
-    def _add_ps(self, n_k, n_l):
-
-        return
-    
-    def _add_mix(self):
-
-        return
         
-    
     def _swap_paths(self, path_i, path_j, n):
         sub_pathi = path_i[path_i.index(n):]
         sub_pathj = path_j[path_j.index(n):]
         path_i = path_i[:path_i.index(n)]+sub_pathj
         path_j = path_j[:path_j.index(n)]+sub_pathi
 
-        return
+        return path_i, path_j
+    
+    def _add_swaps(self, n, n1):
+        #Swap qubits
+        aux = self.map[n]
+        self.map[n] = self.map[n1]
+        self.map[n1] = aux
+        #Add time on nodes
+        max_time=max(self.qubit_time[n], self.qubit_time[n1])
+        self.qubit_time[n1] = max_time+self.op_times[1]
+        self.qubit_time[n] = max_time+self.op_times[1]
 
     
-    def makespan():
-        return fit
+    def _add_ps(self, n, n1):
+        max_time=max(self.qubit_time[n], self.qubit_time[n1])
+        self.qubit_time[n1] = max_time+self.op_times[2]
+        self.qubit_time[n] = max_time+self.op_times[2]
+    
+    def _add_mix(self):
+        self.qubit_time = [x+self.op_times[0] for x in self.qubit_time]
+ 

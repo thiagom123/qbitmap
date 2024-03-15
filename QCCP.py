@@ -33,7 +33,8 @@ class QCCP:
             print("Error: Job requires more qubits than available by choosen device.")
         
         # Assign problem nodes to hardware qubits
-        self.qubitmap = list(zip(self.graph.nodes, self.hardware.nodes)) # Pode ser melhor usar outro método
+        #self.qubitmap = list(zip(self.graph.nodes, self.hardware.nodes)) # Usar lista simples
+        self.qubitmap = range(len(self.hardware.nodes))
     
     def get_machine_schedule(self, algorithm = GA, problem = QAOAmaxcut):
 
