@@ -3,6 +3,13 @@ from pymoo.core.problem import Problem
 from networkx import shortest_path
 
 
+
+#Pendencias: Thiago Melo: - ch1 precisa ser uma lista simples?
+# Thiago Melo: Como representar ch1 d ch2 no x
+# Thiago Melo: Verificar se estamos pegando solucoes de rounds anteriores
+# Thiago Melo: Mudar variaveis q e n
+# Thiago Melo: Criar arquivo de testes
+
 class QAOAmaxcut(Problem):
     def __init__(self, num_gates, qubitmap, hardware_graph, qubit_time, op_times = [1, 2, 3, 4], w = 0):
 
@@ -31,6 +38,7 @@ class QAOAmaxcut(Problem):
         ch1: List of duples
         ch2: List of duples
         '''
+        #Ver questão da continuidade dos rounds
         SGr=SG
         num_gates = self.n_var
         #Mudar notação, trocar q pelo n
