@@ -9,7 +9,8 @@ from networkx import shortest_path
 # Thiago Melo: Verificar se estamos pegando solucoes de rounds anteriores: Sim, através do current_time(?)
 # Thiago Melo: Mudar variaveis q e n -> nodo n qubit q (feito)
 # Thiago Melo: Criar arquivo de testes
-#Adicionar otimização que ele faz para portas mix
+#Adicionar otimização que ele faz para portas mix -> Vou precisar adicionar um solution graph
+# Analisar se precisamos retornar um solution graph ou não
 
 class QAOAmaxcut(Problem):
     def __init__(self, num_gates, qubitmap, hardware_graph, current_time, op_times = [1, 2, 3, 4], w = 0):
@@ -20,6 +21,7 @@ class QAOAmaxcut(Problem):
         self.QM = hardware_graph
         self.node_time = current_time
         self.op_times = op_times
+        self.last_gate = np.zeros(len(self.node_time))
         super().__init__(n_var=num_gates, n_obj=1, n_constr=0, xl=0, xu=num_gates-1, elementwise_evaluation=True)
 
 
@@ -115,13 +117,19 @@ class QAOAmaxcut(Problem):
         max_time=max(self.node_time[n], self.node_time[n1])
         self.node_time[n1] = max_time+self.op_times[1]
         self.node_time[n] = max_time+self.op_times[1]
+        self.last_gate[n1] = 1
+        self.last_gate[n] = 1
+
 
     
     def _add_ps(self, n, n1):
         max_time=max(self.node_time[n], self.node_time[n1])
         self.node_time[n1] = max_time+self.op_times[2]
         self.node_time[n] = max_time+self.op_times[2]
+        self.last_gate[n1] = 2
+        self.last_gate[n] = 2
     
     def _add_mix(self):
         self.node_time = [x+self.op_times[0] for x in self.node_time]
+        self.last_gate = [3 for x in self.last_gate]
  
