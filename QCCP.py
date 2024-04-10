@@ -36,7 +36,15 @@ class QCCP:
         #self.qubitmap = list(zip(self.graph.nodes, self.hardware.nodes)) # Usar lista simples
         self.qubitmap = range(len(self.hardware.nodes))
     
-    def get_machine_schedule(self, algorithm = GA, problem = QAOAmaxcut):
+    def get_machine_schedule(self, algorithm = 'GA', problem = QAOAmaxcut):
+
+        if chosen_algorithm == "GA":
+            algorithm = GA(pop_size=11,
+                  sampling=MySampling(),
+                  crossover=MyCrossover(),
+                  mutation=MyMutation(),
+                  eliminate_duplicates=MyDuplicateElimination()
+                )
 
         # This is the EA search algorithm to optimize the machine schedule
         for i in range(self.r):
