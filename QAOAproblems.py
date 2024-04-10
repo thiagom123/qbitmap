@@ -30,8 +30,8 @@ class QAOAmaxcut(Problem):
 
     def _evaluate(self, ch1, ch2, out):
         '''
-        ch1: List of elements of Chromossome 1
-        ch2: List of elements of Chromossome 1
+        ch1: List of duples elements of Chromossome 1
+        ch2: List of duples elements of Chromossome 1
         '''
         self.decoding(ch1, ch2)
         #fitness = self.makespan(ch1, ch2)
@@ -61,7 +61,7 @@ class QAOAmaxcut(Problem):
                 #q, q1 = q_ni, q_nj
                 q, q1 = self._next_qubits(path_i, path_j, q_ni, q_nj);
                 if [q, q1] != [q_ni, q_nj] and [q, q1] != [q_nj, q_ni]:
-                    print("add_swaps",n_i, n_j, q, q1)
+                    #print("add_swaps",n_i, n_j, q, q1)
                     self._add_swaps(self.map.index(q), self.map.index(q1), q, q1)
                     #O avanço aqui está bugado
                     if q == q_ni:
@@ -70,11 +70,11 @@ class QAOAmaxcut(Problem):
                         q_nj = q1
                 else:
                     #swap in 𝑝𝑎𝑡ℎ1 and 𝑝𝑎𝑡ℎ2 the subpaths from the current qubits
-                    print("swap paths")
+                    #print("swap paths")
                     path_i, path_j = self._swap_paths(path_i, path_j, q)
-            print("add ps", n_i, n_j)
+            #print("add ps", n_i, n_j)
             self._add_ps(n_i, n_j)
-        print("add mix")
+        #print("add mix")
         self._add_mix()        
             
         return
@@ -131,8 +131,8 @@ class QAOAmaxcut(Problem):
         max_time=max(self.node_time[n], self.node_time[n1])
         self.node_time[n1] = max_time+self.op_times[1]
         self.node_time[n] = max_time+self.op_times[1]
-        print("nodes", n, n1)
-        print("times", self.node_time[n])
+        #print("nodes", n, n1)
+        #print("times", self.node_time[n])
         self.last_gate[n1] = 1
         self.last_gate[n] = 1
         return
@@ -145,12 +145,12 @@ class QAOAmaxcut(Problem):
         self.node_time[n] = max_time+self.op_times[2]
         self.last_gate[n1] = 2
         self.last_gate[n] = 2
-        print("nodes", n, n1)
-        print("times", self.node_time[n])
+        #print("nodes", n, n1)
+        #print("times", self.node_time[n])
         return
     
     def _add_mix(self):
-        print(self.node_time)
+        #print(self.node_time)
         self.node_time = [x+self.op_times[0] for x in self.node_time]
         self.last_gate = [3 for x in self.last_gate]
         return
