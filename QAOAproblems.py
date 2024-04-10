@@ -9,8 +9,11 @@ from networkx import shortest_path
 # Thiago Melo: Verificar se estamos pegando solucoes de rounds anteriores: Sim, através do current_time(?)
 # Thiago Melo: Mudar variaveis q e n -> nodo n qubit q (feito)
 # Thiago Melo: Criar arquivo de testes
-#Adicionar otimização que ele faz para portas mix -> Vou precisar adicionar um solution graph
+#Adicionar otimização que ele faz para portas mix -> Vou precisar adicionar um solution graph?
 # Analisar se precisamos retornar um solution graph ou não
+#Código está funcionando, mas apenas para um Quantum hardware sem pesos
+#Podemos colocar o pesos no próprios hardware_graph?
+#Adicionar otimização
 
 class QAOAmaxcut(Problem):
     def __init__(self, num_gates, qubitmap, hardware_graph, current_time, op_times = [1, 2, 3, 4], w = 0):
@@ -27,7 +30,8 @@ class QAOAmaxcut(Problem):
 
     def _evaluate(self, ch1, ch2, out):
         '''
-        x: Matrix containin ch1 only
+        ch1: List of elements of Chromossome 1
+        ch2: List of elements of Chromossome 1
         '''
         self.decoding(ch1, ch2)
         #fitness = self.makespan(ch1, ch2)
@@ -45,7 +49,8 @@ class QAOAmaxcut(Problem):
         ch2: List of duples
         '''
         num_gates = self.n_var
-        for k in num_gates:
+        for k in range(num_gates):
+            print("Teste", k)
             n_i, n_j = ch1[k][0], ch1[k][1]
             q_k, q_l = ch2[k][0], ch2[k][1]
             #pegar o qubit atual dos qstates
@@ -57,23 +62,30 @@ class QAOAmaxcut(Problem):
                 #q, q1 = q_ni, q_nj
                 q, q1 = self._next_qubits(path_i, path_j, q_ni, q_nj);
                 if [q, q1] != [q_ni, q_nj] and [q, q1] != [q_nj, q_ni]:
+                    print("add_swaps")
                     self._add_swaps(q, q1)
-                    q = q1
+                    #O avanço aqui está bugado
+                    if q == q_ni:
+                        q_ni = q1
+                    elif q == q_nj:
+                        q_nj = q1
+                    print(q, q1, q_ni, q_nj, d_ni, d_nj)
                 else:
                     #swap in 𝑝𝑎𝑡ℎ1 and 𝑝𝑎𝑡ℎ2 the subpaths from the current qubits
-                    self._swap_paths(path_i, path_j, q)
-
+                    path_i, path_j = self._swap_paths(path_i, path_j, q)
+            print("add ps", k)
             self._add_ps(q_k, q_l)
+        print("add mix")
         self._add_mix()        
             
         return
         
     def _calculate_minimal_paths(self, q_ni, q_nj, n_k, n_l):
         #checar argumentos
-        path_a1 = shortest_path(q_ni, n_k, self.QM)
-        path_b1 = shortest_path(q_nj, n_l, self.QM)
-        path_a2 = shortest_path(q_ni, n_l, self.QM)
-        path_b2 = shortest_path(q_nj, n_k, self.QM)
+        path_a1 = shortest_path(self.QM, q_ni, n_k)
+        path_b1 = shortest_path(self.QM, q_nj, n_l)
+        path_a2 = shortest_path(self.QM, q_ni, n_l)
+        path_b2 = shortest_path(self.QM, q_nj, n_k)
 
         if(len(path_a1) + len(path_b1) <= len(path_a2) + len(path_b2)):
             return path_a1, path_b1
@@ -87,13 +99,17 @@ class QAOAmaxcut(Problem):
         #Acho que tem forma melhor
         if(path_i.index(q_ni)+1<len(path_i)):
             succ_i = path_i[path_i.index(q_ni)+1]
+        else:
+            succ_i = q_ni
         if(path_j.index(q_nj)+1<len(path_j)):
             succ_j = path_j[path_j.index(q_nj)+1]
+        else:
+            succ_j = q_nj
         #if [n_qi, succ_i]!=[n_qi, n_qj]:
-        if succ_i!=q_nj:
+        if succ_i!= q_ni and succ_i!=q_nj:
             q, q1 = q_ni, succ_i
         #elif [n_qj, succ_j]!=[n_qj, n_qi]:
-        elif succ_j!=q_ni:
+        elif succ_j!= q_nj and succ_j!=q_ni:
             q, q1 = q_nj, succ_j
         else:
             q, q1 = q_ni, q_nj
@@ -119,6 +135,7 @@ class QAOAmaxcut(Problem):
         self.node_time[n] = max_time+self.op_times[1]
         self.last_gate[n1] = 1
         self.last_gate[n] = 1
+        return
 
 
     
@@ -128,8 +145,11 @@ class QAOAmaxcut(Problem):
         self.node_time[n] = max_time+self.op_times[2]
         self.last_gate[n1] = 2
         self.last_gate[n] = 2
+        return
     
     def _add_mix(self):
+        print(self.node_time)
         self.node_time = [x+self.op_times[0] for x in self.node_time]
         self.last_gate = [3 for x in self.last_gate]
+        return
  
