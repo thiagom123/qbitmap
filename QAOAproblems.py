@@ -50,7 +50,6 @@ class QAOAmaxcut(Problem):
         '''
         num_gates = self.n_var
         for k in range(num_gates):
-            print("Teste", k)
             n_i, n_j = ch1[k][0], ch1[k][1]
             q_k, q_l = ch2[k][0], ch2[k][1]
             #pegar o qubit atual dos qstates
@@ -62,19 +61,19 @@ class QAOAmaxcut(Problem):
                 #q, q1 = q_ni, q_nj
                 q, q1 = self._next_qubits(path_i, path_j, q_ni, q_nj);
                 if [q, q1] != [q_ni, q_nj] and [q, q1] != [q_nj, q_ni]:
-                    print("add_swaps")
-                    self._add_swaps(q, q1)
+                    print("add_swaps",n_i, n_j, q, q1)
+                    self._add_swaps(self.map.index(q), self.map.index(q1), q, q1)
                     #O avanço aqui está bugado
                     if q == q_ni:
                         q_ni = q1
                     elif q == q_nj:
                         q_nj = q1
-                    print(q, q1, q_ni, q_nj, d_ni, d_nj)
                 else:
                     #swap in 𝑝𝑎𝑡ℎ1 and 𝑝𝑎𝑡ℎ2 the subpaths from the current qubits
+                    print("swap paths")
                     path_i, path_j = self._swap_paths(path_i, path_j, q)
-            print("add ps", k)
-            self._add_ps(q_k, q_l)
+            print("add ps", n_i, n_j)
+            self._add_ps(n_i, n_j)
         print("add mix")
         self._add_mix()        
             
@@ -124,15 +123,16 @@ class QAOAmaxcut(Problem):
 
         return path_i, path_j
     
-    def _add_swaps(self, n, n1):
+    def _add_swaps(self, n, n1, q, q1):
         #Swap qubits
-        aux = self.map[n]
-        self.map[n] = self.map[n1]
-        self.map[n1] = aux
+        self.map[n] = q1
+        self.map[n1] = q
         #Add time on nodes
         max_time=max(self.node_time[n], self.node_time[n1])
         self.node_time[n1] = max_time+self.op_times[1]
         self.node_time[n] = max_time+self.op_times[1]
+        print("nodes", n, n1)
+        print("times", self.node_time[n])
         self.last_gate[n1] = 1
         self.last_gate[n] = 1
         return
@@ -145,6 +145,8 @@ class QAOAmaxcut(Problem):
         self.node_time[n] = max_time+self.op_times[2]
         self.last_gate[n1] = 2
         self.last_gate[n] = 2
+        print("nodes", n, n1)
+        print("times", self.node_time[n])
         return
     
     def _add_mix(self):
