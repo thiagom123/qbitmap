@@ -71,7 +71,7 @@ class QAOAmaxcut(Problem):
                 else:
                     #swap in 𝑝𝑎𝑡ℎ1 and 𝑝𝑎𝑡ℎ2 the subpaths from the current qubits
                     #print("swap paths")
-                    path_i, path_j = self._swap_paths(path_i, path_j, q)
+                    path_i, path_j = self._swap_paths(path_i, path_j, q1)
             #print("add ps", n_i, n_j)
             self._add_ps(n_i, n_j)
         #print("add mix")
@@ -115,11 +115,17 @@ class QAOAmaxcut(Problem):
 
         return q, q1
         
-    def _swap_paths(self, path_i, path_j, n):
-        sub_pathi = path_i[path_i.index(n):]
-        sub_pathj = path_j[path_j.index(n):]
-        path_i = path_i[:path_i.index(n)]+sub_pathj
-        path_j = path_j[:path_j.index(n)]+sub_pathi
+    def _swap_paths(self, path_i, path_j, q_next):
+        if(path_i.index(q_next)+1<len(path_i)):
+            sub_pathi = path_i[path_i.index(q_next)+1:]
+        else:
+            sub_pathi=[]
+        if(path_j.index(q_next)+1<len(path_j)):
+            sub_pathj = path_j[path_j.index(q_next)+1:]
+        else:
+            sub_pathj=[]
+        path_i = path_i[:path_i.index(q_next)+1]+sub_pathj
+        path_j = path_j[:path_j.index(q_next)+1]+sub_pathi
 
         return path_i, path_j
     
