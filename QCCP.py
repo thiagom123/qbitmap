@@ -48,10 +48,10 @@ class QCCP:
 
         # This is the EA search algorithm to optimize the machine schedule
         for i in range(self.r):
-            self.SGr = minimize(problem, algorithm) # This should also return updated qubitmap
-
-            #SG = SG + SGr
-        
+            if i==0:
+                self.SGr = minimize(problem, algorithm)
+            else:
+                self.SGr = minimize(problem=self.SGr.problem, algorithm=algorithm)        
         #One more function here to compile a working machine schedule for IBM machine or Qiskit
         
         return schedule
