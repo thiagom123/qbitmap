@@ -1,6 +1,7 @@
 import numpy as np
-from pymoo.core.problem import Problem
+from pymoo.core.problem import ElementwiseProblem
 from networkx import shortest_path
+from quantum_devices import QuantumDevices
 
 
 
@@ -15,18 +16,33 @@ from networkx import shortest_path
 #Podemos colocar o pesos no próprios hardware_graph?
 #Adicionar otimização
 
-class QAOAmaxcut(Problem):
-    def __init__(self, num_gates, qubitmap, hardware_graph, current_time, op_times = [1, 2, 3, 4], w = 0):
+class QAOAmaxcut(ElementwiseProblem):
+    def __init__(self, graph, hardware = 'IBM27q', qubitmap = None, current_time = 0, op_times = [1, 2, 3, 4], w = 0):
 
-        #Lista de 
-        self.map = qubitmap
-        self.w = w
-        self.QM = hardware_graph
+        self.ps_gates = graph.edges
         self.node_time = current_time
+        self.num_gates = len(self.ps_gates)
         self.op_times = op_times
         self.last_gate = np.zeros(len(self.node_time))
-        super().__init__(n_var=num_gates, n_obj=1, n_constr=0, xl=0, xu=num_gates-1, elementwise_evaluation=True)
+        self.w = w
 
+        self.QM = QuantumDevices(hardware)
+        self.num_qubits = self.QM.number_of_nodes()
+
+        #Check if choosen device is qualified
+        if graph.number_of_nodes() > self.num_qubits:
+            print("Error: Job requires more qubits than available by choosen device.")
+
+        # Creates initial mapping None or picks current map if available
+        if qubitmap == None:
+            self.map = range(len(self.ps_gates))
+        else: self.map = qubitmap
+
+        super().__init__(n_var=graph.number_of_nodes,
+                         n_obj=1, n_constr=0,
+                         xl=0,
+                         xu=graph.number_of_nodes-1,
+                         elementwise_evaluation=True)
 
     def _evaluate(self, ch1, ch2, out):
         '''
@@ -34,7 +50,6 @@ class QAOAmaxcut(Problem):
         ch2: List of duples elements of Chromossome 1
         '''
         self.decoding(ch1, ch2)
-        #fitness = self.makespan(ch1, ch2)
         fitness = max(self.node_time)
         out["F"] = fitness
     

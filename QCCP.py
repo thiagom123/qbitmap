@@ -9,49 +9,35 @@ class QCCP:
     QCCP: Quantum Circuit Compilation Problem - QAOA
 
     Generalized for any QAOA problem
+
+        graph: (networkx Graph)
+        problem: (pymoo ElementWiseProblem)
+        algorithm: (pymoo Algorithm)
+        r: (int) rounds/layers
+        w: Current connection weights measured on the quantum device (NOT IN USE)
+        run: (bool) automatically runs QCCP instance and saves a QM schedule
     '''
 
-    def __init__(self, graph, QM = 'IBM27q', r = 1, w = 0):
-        '''
-        graph: networkx Graph
-        QM: (str = 'IBM27q', ...) Quantum Hardware to perform the job
-        r: (int) rounds/layers
-        w: Current connection weights measured on the quantum device
-        '''
+    def __init__(self, graph, problem, algorithm, r = 1, w = 0, run = False):
 
+        # Incorporate declared variables
         self.graph = graph
-        self.ps_gates = graph.edges
-        self.permutation_dim = graph.number_of_edges()
-
-        self.devices = QuantumDevices()
-        self.hardware = self.devices(QM)
-        
+        self.problem = problem
+        self.algorithm = algorithm
         self.r = r
         self.w = w
 
-        if self.graph.num_nodes > self.hardware.number_of_nodes():
-            print("Error: Job requires more qubits than available by choosen device.")
-        
-        # Assign problem nodes to hardware qubits
-        #self.qubitmap = list(zip(self.graph.nodes, self.hardware.nodes)) # Usar lista simples
-        self.qubitmap = range(len(self.hardware.nodes))
+        if run == True:
+            self.schedule = self.get_machine_schedule()
     
-    def get_machine_schedule(self, algorithm = 'GA', problem = QAOAmaxcut):
-
-        if chosen_algorithm == "GA":
-            algorithm = GA(pop_size=11,
-                  sampling=MySampling(),
-                  crossover=MyCrossover(),
-                  mutation=MyMutation(),
-                  eliminate_duplicates=MyDuplicateElimination()
-                )
+    def get_machine_schedule(self):
 
         # This is the EA search algorithm to optimize the machine schedule
         for i in range(self.r):
             if i==0:
-                self.SGr = minimize(problem, algorithm)
+                self.SGr = minimize(self.problem, self.algorithm)
             else:
-                self.SGr = minimize(problem=self.SGr.problem, algorithm=algorithm)        
+                self.SGr = minimize(problem=self.SGr.problem, algorithm= self.algorithm)        
         #One more function here to compile a working machine schedule for IBM machine or Qiskit
         
         return schedule
