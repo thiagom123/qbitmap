@@ -42,13 +42,15 @@ class QAOAPMX(Crossover):
     def _do(self, problem, X, **kwargs):
 
         # The input of has the following shape (n_parents, n_matings, n_var)
-        _, n_matings, n_var = X.shape
+        _, n_matings, _ = X.shape
 
         # The output should have the shape (n_offsprings, n_matings, n_var)
         # Because there the number of parents and offsprings are equal it keeps the shape of X
         Y = np.full_like(X, None, dtype=object)
 
         num_gates = len(problem.ps_gates)
+
+        # each parent pass about half of their genes to each offspring
         n = int(num_gates/2)
 
         # for each mating provided
@@ -75,19 +77,36 @@ class QAOAPMX(Crossover):
             indexes_p1 = rnd.sample(range(num_gates), n)
             indexes_p2 = rnd.sample(range(num_gates), n)
 
+            count_off1 = 0
+            count_off2 = 0
+
             for i in range(num_gates):
 
                 if i in indexes_p1: #p1 passing genes to off1
-                    ch1_off1[i] = ch1_p1
-                    ch2_off1[i] = ch2_p1
+                    ch1_off1[i] = ch1_p1[i]
+                    ch2_off1[i] = ch2_p1[i]
+                else:
+                    while count_off1 in indexes_p2:
+                        count_off1 += 1
+                    ch1_off1[i] = ch1_p2[count_off1]
+                    ch2_off1[i] = ch2_p2[count_off1]
+                    count_off1 += 1
                     
                 if i in indexes_p2: #p2 passing genes to off2
-                    ch1_off2[i] = ch1_p2
-                    ch2_off2[1] = ch2_p2
-
+                    ch1_off2[i] = ch1_p2[i]
+                    ch2_off2[1] = ch2_p2[i]
+                else:
+                    while count_off2 in indexes_p1:
+                        count_off2 += 1
+                    ch1_off2[i] = ch1_p1
+                    ch2_off2[i] = ch2_p1
+                    count_off2 += 1
+            
+            off_1 = QAOAindividual(ch1_off1,ch2_off1)
+            off_2 = QAOAindividual(ch1_off2,ch2_off2)
 
             # join the character list and set the output
-            Y[0, k, 0], Y[1, k, 0] = "".join(off_a), "".join(off_b)
+            Y[0, k, 0], Y[1, k, 0] = "".join(off_1), "".join(off_2)
 
         return Y
 
