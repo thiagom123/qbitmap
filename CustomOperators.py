@@ -4,6 +4,7 @@ import random as rnd
 from pymoo.core.sampling import Sampling
 from pymoo.core.crossover import Crossover
 from pymoo.core.mutation import Mutation
+from pymoo.core.duplicate import ElementwiseDuplicateElimination
 
 class QAOAindividual:
 
@@ -15,20 +16,23 @@ class QAOAindividual:
         '''
         self.ch1 = ch1
         self.ch2 = ch2
-        self.fitness = None
+        self.current_times = None
+        self.qubitmap = None
 
 class QAOASampling(Sampling):
 
-    def _do(self, problem, pop_size=50):
+    def _do(self, problem, pop_size=50, **kwargs):
 
         pop = np.full((pop_size, 1), None, dtype=object)
         ps_gates = problem.ps_gates
         num_gates = len(ps_gates)
-        qubit_connections = problem.QM.edges
+        qubit_connections = list(problem.QM.edges)
 
         for i in range(pop_size):
-            ch1 = rnd.shuffle(ps_gates)
-            ch2 =  rnd.shuffle(qubit_connections)
+            rnd.shuffle(ps_gates)
+            rnd.shuffle(qubit_connections)
+            ch1 = ps_gates
+            ch2 =  qubit_connections
             pop[i, 0] = QAOAindividual(ch1, ch2)
 
         return pop
@@ -119,6 +123,7 @@ class QAOAMutation(Mutation):
         # probable Y shape: (pop,1), most likekly offspring pop
         Y = np.full_like(X, None, dtype=object)
         num_gates = len(problem.ps_gates)
+        machine_connections = problem.QM.edges
 
         # for each individual
         for i in range(len(X)):
@@ -127,7 +132,7 @@ class QAOAMutation(Mutation):
             ch1 = individual.ch1
             ch2 = individual.ch2
 
-            # Single mutation stage (mut1)
+            # First mutation stage (mut1)
             indexes = rnd.sample(range(num_gates), 2)
 
             l11, l12 = ch1[indexes[0]], ch2[indexes[0]]
@@ -138,16 +143,22 @@ class QAOAMutation(Mutation):
             ch2[indexes[1]]= l12
 
             # Second mutation stage (mut2)
-
+            random_index = rnd.randrange(len(ch2))
+            random_tuple = ch2[random_index]
+            nodes_in_tuple = set(random_tuple)
+            candidate_tuples = [tup for i, tup in enumerate(machine_connections) if any(node in nodes_in_tuple for node in tup)]
+            new_connection = rnd.choice(candidate_tuples)
+            ch2[random_index] = new_connection
 
             # put new mutated ind in Y
             Y[i] = QAOAindividual(ch1, ch2)
-            
 
-
-            
-
-        return X
+        return Y
 
     
-#class MyDuplicateElimination()
+
+
+class QAOADuplicateElimination(ElementwiseDuplicateElimination):
+
+    def is_equal(self, a, b):
+        return a.X[0] == b.X[0]

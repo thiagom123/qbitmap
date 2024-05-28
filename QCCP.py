@@ -36,6 +36,16 @@ class QCCP:
         for i in range(self.r):
             if i==0:
                 self.SGr = minimize(self.problem, self.algorithm)
+                opt_r =self.SGr.opt
+                print(opt_r)
+
+                # sketch
+                opt_total = opt_total + opt_r
+                opt_circuit = self.makespan(opt_total)
+                current_time = # extract from opt_circuit
+                # update current time in problem
+                self.problem.current_time = current_time
+                
             else:
                 self.SGr = minimize(problem=self.SGr.problem, algorithm= self.algorithm)        
         #One more function here to compile a working machine schedule for IBM machine or Qiskit

@@ -1,4 +1,6 @@
 import numpy as np
+import networkx as nx
+
 from pymoo.core.problem import ElementwiseProblem
 from networkx import shortest_path
 from quantum_devices import QuantumDevices
@@ -19,14 +21,19 @@ from quantum_devices import QuantumDevices
 class QAOAmaxcut(ElementwiseProblem):
     def __init__(self, graph, hardware = 'IBM27q', qubitmap = None, current_time = 0, op_times = [1, 2, 3, 4], w = 0):
 
-        self.ps_gates = graph.edges
-        self.node_time = current_time
+        self.ps_gates = list(graph.edges)
+        if current_time == 0:
+            self.node_time = np.zeros(len(graph.number_of_nodes()))
+        else:
+            self.node_time = current_time
+        
         self.num_gates = len(self.ps_gates)
         self.op_times = op_times
-        self.last_gate = np.zeros(len(self.node_time))
+        #self.last_gate = np.zeros(len(self.node_time))
         self.w = w
 
-        self.QM = QuantumDevices(hardware)
+        self.devices = QuantumDevices()
+        self.QM = self.devices[hardware]
         self.num_qubits = self.QM.number_of_nodes()
 
         #Check if choosen device is qualified
@@ -38,24 +45,25 @@ class QAOAmaxcut(ElementwiseProblem):
             self.map = range(len(self.ps_gates))
         else: self.map = qubitmap
 
-        super().__init__(n_var=graph.number_of_nodes,
+        super().__init__(n_var=graph.number_of_nodes(),
                          n_obj=1, n_constr=0,
                          xl=0,
-                         xu=graph.number_of_nodes-1,
+                         xu=graph.number_of_nodes()-1,
                          elementwise_evaluation=True)
 
-    def _evaluate(self, ch1, ch2, out):
+    def _evaluate(self, X, out):
+        print('debug',X)
         '''
         ch1: List of duples elements of Chromossome 1
         ch2: List of duples elements of Chromossome 1
         '''
+        ch1 = X.ch1
+        ch2 = X.ch2
         self.decoding(ch1, ch2)
         fitness = max(self.node_time)
+
         out["F"] = fitness
     
-    def makespan(self):
-
-        return fit
 
     def decoding(self, ch1, ch2):
         '''
@@ -74,7 +82,7 @@ class QAOAmaxcut(ElementwiseProblem):
 
             while (q_ni!=d_ni) or (q_nj!=d_nj):
                 #q, q1 = q_ni, q_nj
-                q, q1 = self._next_qubits(path_i, path_j, q_ni, q_nj);
+                q, q1 = self._next_qubits(path_i, path_j, q_ni, q_nj)
                 if [q, q1] != [q_ni, q_nj] and [q, q1] != [q_nj, q_ni]:
                     #print("add_swaps",n_i, n_j, q, q1)
                     self._add_swaps(self.map.index(q), self.map.index(q1), q, q1)
