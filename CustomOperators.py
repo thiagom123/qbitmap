@@ -32,7 +32,7 @@ class QAOASampling(Sampling):
             rnd.shuffle(ps_gates)
             rnd.shuffle(qubit_connections)
             ch1 = ps_gates
-            ch2 =  qubit_connections
+            ch2 =  qubit_connections[:num_gates]
             pop[i, 0] = QAOAindividual(ch1, ch2)
 
         return pop

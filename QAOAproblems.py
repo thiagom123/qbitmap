@@ -42,7 +42,7 @@ class QAOAmaxcut(ElementwiseProblem):
 
         # Creates initial mapping None or picks current map if available
         if qubitmap == None:
-            self.map = range(len(self.ps_gates))
+            self.map = list(range(len(self.ps_gates)))
         else: self.map = qubitmap
 
         super().__init__(n_var=graph.number_of_nodes(),
@@ -52,14 +52,17 @@ class QAOAmaxcut(ElementwiseProblem):
                          elementwise_evaluation=True)
 
     def _evaluate(self, X, out):
-        print('debug',X)
+        individual = X[0]
         '''
         ch1: List of duples elements of Chromossome 1
         ch2: List of duples elements of Chromossome 1
         '''
-        ch1 = X.ch1
-        ch2 = X.ch2
+        ch1 = individual.ch1
+        ch2 = individual.ch2
+        print('debug ch:')
+        print('before decoding:', ch1, ch2)
         self.decoding(ch1, ch2)
+        print('before decoding:', ch1, ch2)
         fitness = max(self.node_time)
 
         out["F"] = fitness
@@ -76,6 +79,7 @@ class QAOAmaxcut(ElementwiseProblem):
             n_i, n_j = ch1[k][0], ch1[k][1]
             q_k, q_l = ch2[k][0], ch2[k][1]
             #pegar o qubit atual dos qstates
+            print('bebug map:', self.map)
             q_ni, q_nj = self.map[n_i], self.map[n_j]
             path_i, path_j = self._calculate_minimal_paths(q_ni, q_nj, q_k, q_l)
             d_ni, d_nj = path_i[-1], path_j[-1]
