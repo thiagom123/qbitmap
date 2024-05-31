@@ -24,10 +24,11 @@ class QAOAmaxcut(ElementwiseProblem):
 
         self.ps_gates = list(graph.edges)
         if current_time == 0:
-            self.node_time = np.zeros(len(graph.number_of_nodes()))
+            self.initial_node_time = np.zeros(len(graph.number_of_nodes()))
         else:
-            self.node_time = current_time
-        
+            self.initial_node_time = current_time
+        self.node_time = self.initial_node_time
+
         self.num_gates = len(self.ps_gates)
         self.op_times = op_times
         #self.last_gate = np.zeros(len(self.node_time))
@@ -43,9 +44,10 @@ class QAOAmaxcut(ElementwiseProblem):
 
         # Creates initial mapping None or picks current map if available
         if qubitmap == None:
-            self.map = list(range(len(self.ps_gates)))
+            self.initial_map = list(range(len(self.ps_gates)))
             # map index is graph node, map value is hardware qubit
-        else: self.map = qubitmap
+        else: self.initial_map = qubitmap
+        self.map = self.initial_map
 
         super().__init__(n_var=graph.number_of_nodes(),
                          n_obj=1, n_constr=0,
@@ -61,6 +63,9 @@ class QAOAmaxcut(ElementwiseProblem):
         '''
         ch1 = individual.ch1
         ch2 = individual.ch2
+        #resetar qubit map e node time
+        self.map = self.initial_map
+        self.node_time = self.initial_node_time
         print('debug ch:')
         print('before decoding: ch1:', ch1, 'ch2:', ch2, 'node times:', self.node_time)
         self.decoding(ch1, ch2)
