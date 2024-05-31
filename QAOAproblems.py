@@ -17,6 +17,7 @@ from quantum_devices import QuantumDevices
 #Código está funcionando, mas apenas para um Quantum hardware sem pesos
 #Podemos colocar o pesos no próprios hardware_graph?
 #Adicionar otimização
+#before decoding: ch1: [(1, 2), (0, 1), (0, 2)] ch2: [(10, 12), (12, 15), (4, 7)] deu pau aqui
 
 class QAOAmaxcut(ElementwiseProblem):
     def __init__(self, graph, hardware = 'IBM27q', qubitmap = None, current_time = 0, op_times = [1, 2, 3, 4], w = 0):
@@ -79,19 +80,24 @@ class QAOAmaxcut(ElementwiseProblem):
         for k in range(num_gates):
             n_i, n_j = ch1[k][0], ch1[k][1]
             q_k, q_l = ch2[k][0], ch2[k][1]
-            #print('debug', n_i, n_j)
+            #print('PS Gate', n_i, n_j)
             #pegar o qubit atual dos qstates
             #print('bebug map:', self.map)
             q_ni, q_nj = self.map[n_i], self.map[n_j]
             path_i, path_j = self._calculate_minimal_paths(q_ni, q_nj, q_k, q_l)
+            #print("Path ", n_i, " : ", path_i)
+            #print("Path ", n_j, " : ", path_j)
             d_ni, d_nj = path_i[-1], path_j[-1]
-
+            #print("Destinations ", d_ni, d_nj)
             while (q_ni!=d_ni) or (q_nj!=d_nj):
                 #q, q1 = q_ni, q_nj
                 q, q1 = self._next_qubits(path_i, path_j, q_ni, q_nj)
                 if [q, q1] != [q_ni, q_nj] and [q, q1] != [q_nj, q_ni]:
-                    print("add_swaps",n_i, n_j, q, q1)
-                    self._add_swaps(self.map.index(q), self.map.index(q1), q, q1)
+                    #print("add_swaps",self.map.index(q), q, q1)
+                    if(q1 in self.map):
+                        self._add_swaps2(q, q1)
+                    else:
+                        self._add_swaps1(q, q1)
                     #O avanço aqui está bugado
                     if q == q_ni:
                         q_ni = q1
@@ -99,8 +105,14 @@ class QAOAmaxcut(ElementwiseProblem):
                         q_nj = q1
                 else:
                     #swap in 𝑝𝑎𝑡ℎ1 and 𝑝𝑎𝑡ℎ2 the subpaths from the current qubits
-                    #print("swap paths")
-                    path_i, path_j = self._swap_paths(path_i, path_j, q1)
+                    #print("swap paths", q, q1)
+                    if(q1 in path_i and q1 in path_j):
+                        path_i, path_j = self._swap_paths(path_i, path_j, q1)
+                    else:
+                        path_i, path_j = self._swap_paths(path_i, path_j, q)
+                    #print("New paths: ", path_i, path_j)
+                    #update final destinations
+                    d_ni, d_nj = path_i[-1], path_j[-1]
             #print("add ps", n_i, n_j)
             self._add_ps(n_i, n_j)
         #print("add mix")
@@ -140,6 +152,7 @@ class QAOAmaxcut(ElementwiseProblem):
         elif succ_j!= q_nj and succ_j!=q_ni:
             q, q1 = q_nj, succ_j
         else:
+            #print("XXX")
             q, q1 = q_ni, q_nj
 
         return q, q1
@@ -158,7 +171,21 @@ class QAOAmaxcut(ElementwiseProblem):
 
         return path_i, path_j
     
-    def _add_swaps(self, n, n1, q, q1):
+    def _add_swaps1(self, q, q1):
+        '''
+        Add the swaps. Only the qubit q is occupied by a node.
+        '''
+        n = self.map.index(q)
+        self.map[n] = q1
+        self.node_time[n] += self.op_times[1]
+        return
+
+    def _add_swaps2(self, q, q1):
+        '''
+        Add the swaps. Both qubits q and q1 are occupied by a node.
+        '''
+        n = self.map.index(q)
+        n1 = self.map.index(q1)
         #Swap qubits
         self.map[n] = q1
         self.map[n1] = q
@@ -168,8 +195,8 @@ class QAOAmaxcut(ElementwiseProblem):
         self.node_time[n] = max_time+self.op_times[1]
         #print("nodes", n, n1)
         #print("times", self.node_time[n])
-        self.last_gate[n1] = 1
-        self.last_gate[n] = 1
+        #self.last_gate[n1] = 'swap'
+        #self.last_gate[n] = 'swap'
         return
 
 
@@ -178,8 +205,8 @@ class QAOAmaxcut(ElementwiseProblem):
         max_time=max(self.node_time[n], self.node_time[n1])
         self.node_time[n1] = max_time+self.op_times[2]
         self.node_time[n] = max_time+self.op_times[2]
-        self.last_gate[n1] = 2
-        self.last_gate[n] = 2
+        #self.last_gate[n1] = 'ps'
+        #self.last_gate[n] = 'ps'
         #print("nodes", n, n1)
         #print("times", self.node_time[n])
         return
@@ -187,6 +214,6 @@ class QAOAmaxcut(ElementwiseProblem):
     def _add_mix(self):
         #print(self.node_time)
         self.node_time = [x+self.op_times[0] for x in self.node_time]
-        self.last_gate = [3 for x in self.last_gate]
+        #self.last_gate = ['mix' for x in self.last_gate]
         return
  
