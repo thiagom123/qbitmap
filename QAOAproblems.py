@@ -43,6 +43,7 @@ class QAOAmaxcut(ElementwiseProblem):
         # Creates initial mapping None or picks current map if available
         if qubitmap == None:
             self.map = list(range(len(self.ps_gates)))
+            # map index is graph node, map value is hardware qubit
         else: self.map = qubitmap
 
         super().__init__(n_var=graph.number_of_nodes(),
@@ -60,9 +61,9 @@ class QAOAmaxcut(ElementwiseProblem):
         ch1 = individual.ch1
         ch2 = individual.ch2
         print('debug ch:')
-        print('before decoding:', ch1, ch2)
+        print('before decoding: ch1:', ch1, 'ch2:', ch2, 'node times:', self.node_time)
         self.decoding(ch1, ch2)
-        print('before decoding:', ch1, ch2)
+        print('after decoding:', self.node_time)
         fitness = max(self.node_time)
 
         out["F"] = fitness
@@ -78,8 +79,9 @@ class QAOAmaxcut(ElementwiseProblem):
         for k in range(num_gates):
             n_i, n_j = ch1[k][0], ch1[k][1]
             q_k, q_l = ch2[k][0], ch2[k][1]
+            #print('debug', n_i, n_j)
             #pegar o qubit atual dos qstates
-            print('bebug map:', self.map)
+            #print('bebug map:', self.map)
             q_ni, q_nj = self.map[n_i], self.map[n_j]
             path_i, path_j = self._calculate_minimal_paths(q_ni, q_nj, q_k, q_l)
             d_ni, d_nj = path_i[-1], path_j[-1]
@@ -88,7 +90,7 @@ class QAOAmaxcut(ElementwiseProblem):
                 #q, q1 = q_ni, q_nj
                 q, q1 = self._next_qubits(path_i, path_j, q_ni, q_nj)
                 if [q, q1] != [q_ni, q_nj] and [q, q1] != [q_nj, q_ni]:
-                    #print("add_swaps",n_i, n_j, q, q1)
+                    print("add_swaps",n_i, n_j, q, q1)
                     self._add_swaps(self.map.index(q), self.map.index(q1), q, q1)
                     #O avanço aqui está bugado
                     if q == q_ni:
