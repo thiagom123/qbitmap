@@ -31,7 +31,6 @@ class QAOAmaxcut(ElementwiseProblem):
 
         self.num_gates = len(self.ps_gates)
         self.op_times = op_times
-        #self.last_gate = np.zeros(len(self.node_time))
         self.w = w
 
         self.devices = QuantumDevices()
@@ -49,7 +48,7 @@ class QAOAmaxcut(ElementwiseProblem):
         else: self.initial_map = qubitmap
         self.map = self.initial_map
 
-        super().__init__(n_var=graph.number_of_nodes(),
+        super().__init__(n_var=1, # graph.number_of_nodes()
                          n_obj=1, n_constr=0,
                          xl=0,
                          xu=graph.number_of_nodes()-1,
@@ -63,13 +62,13 @@ class QAOAmaxcut(ElementwiseProblem):
         '''
         ch1 = individual.ch1
         ch2 = individual.ch2
+        times = individual.times
         #resetar qubit map e node time
         self.map = self.initial_map
         self.node_time = self.initial_node_time
-        print('debug ch:')
-        print('before decoding: ch1:', ch1, 'ch2:', ch2, 'node times:', self.node_time)
+        #print('before decoding: ch1:', ch1, 'ch2:', ch2, 'node times:', self.node_time)
         self.decoding(ch1, ch2)
-        print('after decoding:', self.node_time)
+        #print('after decoding:', self.node_time)
         fitness = max(self.node_time)
 
         out["F"] = fitness

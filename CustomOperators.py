@@ -16,7 +16,7 @@ class QAOAindividual:
         '''
         self.ch1 = ch1
         self.ch2 = ch2
-        self.current_times = None
+        self.times = None
         self.qubitmap = None
 
 class QAOASampling(Sampling):
@@ -33,7 +33,9 @@ class QAOASampling(Sampling):
             rnd.shuffle(qubit_connections)
             ch1 = ps_gates
             ch2 =  qubit_connections[:num_gates]
-            pop[i, 0] = QAOAindividual(ch1, ch2)
+            individual = QAOAindividual(ch1, ch2)
+            individual.times = problem.node_time
+            pop[i, 0] = individual
 
         return pop
 
@@ -43,7 +45,7 @@ class QAOAPMX(Crossover):
         # define the crossover: number of parents and number of offsprings
         super().__init__(2, 2)
 
-    def _do(self, problem, X):
+    def _do(self, problem, X, **kwargs):
 
         # The input of has the following shape (n_parents, n_matings, n_var)
         _, n_matings, _ = X.shape
@@ -110,7 +112,7 @@ class QAOAPMX(Crossover):
             off_2 = QAOAindividual(ch1_off2,ch2_off2)
 
             # join the character list and set the output
-            Y[0, k, 0], Y[1, k, 0] = "".join(off_1), "".join(off_2)
+            Y[0, k, 0], Y[1, k, 0] = off_1, off_2
 
         return Y
     
@@ -118,7 +120,7 @@ class QAOAMutation(Mutation):
     def __init__(self):
         super().__init__()
 
-    def _do(self, problem, X):
+    def _do(self, problem, X, **kwargs):
 
         # probable Y shape: (pop,1), most likekly offspring pop
         Y = np.full_like(X, None, dtype=object)
@@ -128,7 +130,8 @@ class QAOAMutation(Mutation):
         # for each individual
         for i in range(len(X)):
 
-            individual = X(i)
+            gambiarra = X[i]
+            individual = gambiarra[0]
             ch1 = individual.ch1
             ch2 = individual.ch2
 
@@ -136,6 +139,10 @@ class QAOAMutation(Mutation):
             indexes = rnd.sample(range(num_gates), 2)
 
             l11, l12 = ch1[indexes[0]], ch2[indexes[0]]
+
+            print('debug: ch1:', ch1, "ch2",ch2)
+
+            print('debug: Indexes:', indexes, "l11 e l12",l11, l12)
 
             ch1[indexes[0]] = ch1[indexes[1]]
             ch2[indexes[0]] = ch2[indexes[2]]
