@@ -36,7 +36,7 @@ class QAOASampling(Sampling):
             individual = QAOAindividual(ch1, ch2)
             individual.times = problem.node_time
             pop[i, 0] = individual
-
+        
         return pop
 
 class QAOAPMX(Crossover):
@@ -81,7 +81,12 @@ class QAOAPMX(Crossover):
 
             # pick which genes from each parent will be passed over to each offspring
             indexes_p1 = rnd.sample(range(num_gates), n)
-            indexes_p2 = rnd.sample(range(num_gates), n)
+
+            indexes_p2 = []
+            for idx in indexes_p1:
+                gene = ch1_p1[idx]
+                corresponding_index = ch1_p2.index(gene)
+                indexes_p2.append((corresponding_index))
 
             count_off1 = 0
             count_off2 = 0
@@ -100,13 +105,18 @@ class QAOAPMX(Crossover):
                     
                 if i in indexes_p2: #p2 passing genes to off2
                     ch1_off2[i] = ch1_p2[i]
-                    ch2_off2[1] = ch2_p2[i]
+                    ch2_off2[i] = ch2_p2[i]
                 else:
                     while count_off2 in indexes_p1:
                         count_off2 += 1
-                    ch1_off2[i] = ch1_p1
-                    ch2_off2[i] = ch2_p1
+                    ch1_off2[i] = ch1_p1[i]
+                    ch2_off2[i] = ch2_p1[i]
                     count_off2 += 1
+            
+            #print('debug crossover: Mating', k)
+            #print('Parent 1:', p1.ch1, p1.ch2,'\nParent 2:',p2.ch1, p2.ch2)
+            #print('indexes:', indexes_p1, indexes_p2)
+            #print('Offspring 1:', ch1_off1, ch2_off1,'\nOffspring 2:',ch1_off2,ch2_off2,'\n')
             
             off_1 = QAOAindividual(ch1_off1,ch2_off1)
             off_2 = QAOAindividual(ch1_off2,ch2_off2)
@@ -126,7 +136,6 @@ class QAOAMutation(Mutation):
         Y = np.full_like(X, None, dtype=object)
         num_gates = len(problem.ps_gates)
         machine_connections = problem.QM.edges
-
         # for each individual
         for i in range(len(X)):
 
@@ -140,15 +149,10 @@ class QAOAMutation(Mutation):
 
             l11, l12 = ch1[indexes[0]], ch2[indexes[0]]
 
-            print('debug: ch1:', ch1, "ch2",ch2)
-
-            print('debug: Indexes:', indexes, "l11 e l12",l11, l12)
-
             ch1[indexes[0]] = ch1[indexes[1]]
-            ch2[indexes[0]] = ch2[indexes[2]]
+            ch2[indexes[0]] = ch2[indexes[1]]
             ch1[indexes[1]] = l11
             ch2[indexes[1]]= l12
-
             # Second mutation stage (mut2)
             random_index = rnd.randrange(len(ch2))
             random_tuple = ch2[random_index]
