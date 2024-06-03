@@ -20,11 +20,11 @@ from quantum_devices import QuantumDevices
 #before decoding: ch1: [(1, 2), (0, 1), (0, 2)] ch2: [(10, 12), (12, 15), (4, 7)] deu pau aqui
 
 class QAOAmaxcut(ElementwiseProblem):
-    def __init__(self, graph, hardware = 'IBM27q', qubitmap = None, current_time = 0, op_times = [1, 2, 3, 4], w = 0):
+    def __init__(self, graph, hardware = 'IBM27q', qubitmap = None, current_time = None, op_times = [1, 2, 3, 4], w = 0):
 
         self.ps_gates = list(graph.edges)
-        if current_time == 0:
-            self.initial_node_time = np.zeros(len(graph.number_of_nodes()))
+        if current_time == None:
+            self.initial_node_time = np.zeros(graph.number_of_nodes())
         else:
             self.initial_node_time = current_time
         self.node_time = self.initial_node_time
@@ -43,7 +43,7 @@ class QAOAmaxcut(ElementwiseProblem):
 
         # Creates initial mapping None or picks current map if available
         if qubitmap == None:
-            self.initial_map = list(range(len(self.ps_gates)))
+            self.initial_map = list(range(graph.number_of_nodes()))
             # map index is graph node, map value is hardware qubit
         else: self.initial_map = qubitmap
         self.map = self.initial_map
