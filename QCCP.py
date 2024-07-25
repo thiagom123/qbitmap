@@ -36,18 +36,26 @@ class QCCP:
         for i in range(self.r):
             if i==0:
                 self.SGr = minimize(self.problem, self.algorithm)
-                opt_r =self.SGr.opt
-                print(opt_r)
+                #opt_f =self.SGr.F
+                r_times = self.SGr.X[0].times
+                r_map = self.SGr.X[0].qubitmap
+                r_gates = self.SGr.X[0].ch1
+
 
                 # sketch
-                opt_total = opt_total + opt_r
-                opt_circuit = self.makespan(opt_total)
-                current_time = # extract from opt_circuit
+                #opt_total = opt_total + opt_f
+                #opt_circuit = self.makespan(r_times)
+                #current_time =  extract from opt_circuit
                 # update current time in problem
-                self.problem.current_time = current_time
-                
+                #self.problem.current_time = current_time
+                schedule = 0
             else:
-                self.SGr = minimize(problem=self.SGr.problem, algorithm= self.algorithm)        
+                self.problem.initial_node_time = r_times
+                self.problem.initial_map = r_map
+                self.SGr = minimize(problem=self.problem, algorithm=self.algorithm)   
+                r_times = self.SGr.X[0].times    
+
+            print("current times: ", r_times) 
         #One more function here to compile a working machine schedule for IBM machine or Qiskit
         
         return schedule

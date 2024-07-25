@@ -62,7 +62,7 @@ class QAOAmaxcut(ElementwiseProblem):
         '''
         ch1 = individual.ch1
         ch2 = individual.ch2
-        times = individual.times
+        #times = individual.times
         #resetar qubit map e node time
         self.map = self.initial_map
         self.node_time = self.initial_node_time
@@ -70,6 +70,8 @@ class QAOAmaxcut(ElementwiseProblem):
         self.decoding(ch1, ch2)
         #print('after decoding:', self.node_time)
         fitness = max(self.node_time)
+        individual.times = self.node_time
+        individual.qubitmap = self.map
 
         out["F"] = fitness
     
@@ -80,8 +82,8 @@ class QAOAmaxcut(ElementwiseProblem):
         ch1: List of duples
         ch2: List of duples
         '''
-        num_gates = self.n_var
-        for k in range(num_gates):
+        #num_gates = self.n_var
+        for k in range(self.num_gates):
             n_i, n_j = ch1[k][0], ch1[k][1]
             q_k, q_l = ch2[k][0], ch2[k][1]
             #print('PS Gate', n_i, n_j)
