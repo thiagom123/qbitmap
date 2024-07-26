@@ -13,6 +13,8 @@ class QAOAindividual:
         ch1: "channel 1" containing a list of tuples that compose all edges in networkx graph and also 
               determines all ps gates for the circuit.
         ch2: "channel 2" containg another list of tuples, in witch a pair (q1,q2) are two qubits in a quantum chip
+        times: Array containing the 'operation' time for each gate 
+        qubitmap: Array with indexes containing the nodes from the graph and the cells containing the current machine's qubit
         '''
         self.ch1 = ch1
         self.ch2 = ch2
@@ -22,6 +24,7 @@ class QAOAindividual:
 class QAOASampling(Sampling):
 
     def _do(self, problem, pop_size=50, **kwargs):
+        
 
         pop = np.full((pop_size, 1), None, dtype=object)
         ps_gates = problem.ps_gates
@@ -113,11 +116,6 @@ class QAOAPMX(Crossover):
                     ch2_off2[i] = ch2_p1[i]
                     count_off2 += 1
             
-            #print('debug crossover: Mating', k)
-            #print('Parent 1:', p1.ch1, p1.ch2,'\nParent 2:',p2.ch1, p2.ch2)
-            #print('indexes:', indexes_p1, indexes_p2)
-            #print('Offspring 1:', ch1_off1, ch2_off1,'\nOffspring 2:',ch1_off2,ch2_off2,'\n')
-            
             off_1 = QAOAindividual(ch1_off1,ch2_off1)
             off_2 = QAOAindividual(ch1_off2,ch2_off2)
 
@@ -132,15 +130,14 @@ class QAOAMutation(Mutation):
 
     def _do(self, problem, X, **kwargs):
 
-        # probable Y shape: (pop,1), most likekly offspring pop
         Y = np.full_like(X, None, dtype=object)
         num_gates = len(problem.ps_gates)
         machine_connections = problem.QM.edges
         # for each individual
         for i in range(len(X)):
 
-            gambiarra = X[i]
-            individual = gambiarra[0]
+            gambiarra = X[i] # Props on you for getting all the way here
+            individual = gambiarra[0] # Leave my gambiarra alone
             ch1 = individual.ch1
             ch2 = individual.ch2
 
