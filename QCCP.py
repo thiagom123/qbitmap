@@ -32,31 +32,33 @@ class QCCP:
     
     def get_machine_schedule(self):
 
-        # This is the EA search algorithm to optimize the machine schedule
+        '''
+            This is the EA search algorithm to optimize the machine schedule.
+            
+            For any QAOA, a GA will optimize the time cost of all necessary
+            operations in the quantum machine for each depth r.
+        ''' 
         for i in range(self.r):
-            if i==0:
-                self.SGr = minimize(self.problem, self.algorithm)
-                #opt_f =self.SGr.F
-                r_times = self.SGr.X[0].times
-                r_map = self.SGr.X[0].qubitmap
-                r_gates = self.SGr.X[0].ch1
 
+            self.SGr = minimize(self.problem, self.algorithm)
 
-                # sketch
-                #opt_total = opt_total + opt_f
-                #opt_circuit = self.makespan(r_times)
-                #current_time =  extract from opt_circuit
-                # update current time in problem
-                #self.problem.current_time = current_time
-                schedule = 0
-            else:
-                self.problem.initial_node_time = r_times
-                self.problem.initial_map = r_map
-                self.SGr = minimize(problem=self.problem, algorithm=self.algorithm)   
-                r_times = self.SGr.X[0].times    
+            # save partial results
+            r_times = self.SGr.X[0].times # optimal times for each gate operation
+            r_map = self.SGr.X[0].qubitmap # current node-qubit mapping
+            r_gates = self.SGr.X[0].ch1 # this rounds optimal operations order
+            r_qubits = self.SGr.X[0].ch2
+
+            # Update operations time and mapping for the next round
+            self.problem.initial_node_time = r_times
+            self.problem.initial_map = r_map
 
             print("current times: ", r_times) 
-        #One more function here to compile a working machine schedule for IBM machine or Qiskit
         
+        schedule = self.create_QM_circuit()
+        
+        return schedule
+    
+    def create_QM_circuit(self): 
+        schedule = "work in progress"
         return schedule
 
