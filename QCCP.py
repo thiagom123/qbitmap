@@ -38,6 +38,8 @@ class QCCP:
             For any QAOA, a GA will optimize the time cost of all necessary
             operations in the quantum machine for each depth r.
         ''' 
+        r_gates = []
+        r_qubits = []
         for i in range(self.r):
 
             self.SGr = minimize(self.problem, self.algorithm)
@@ -45,14 +47,14 @@ class QCCP:
             # save partial results
             r_times = self.SGr.X[0].times # optimal times for each gate operation
             r_map = self.SGr.X[0].qubitmap # current node-qubit mapping
-            r_gates = self.SGr.X[0].ch1 # this rounds optimal operations order
-            r_qubits = self.SGr.X[0].ch2
+            r_gates.append(self.SGr.X[0].ch1) # this rounds optimal operations order
+            r_qubits.append(self.SGr.X[0].ch2)
 
             # Update operations time and mapping for the next round
-            self.problem.initial_node_time = r_times
+            self.problem.initial_node_times = r_times
             self.problem.initial_map = r_map
 
-            print("current times: ", r_times) 
+            print("current times: ", self.problem.initial_node_times) 
         
         schedule = self.create_QM_circuit()
         

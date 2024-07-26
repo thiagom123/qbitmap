@@ -37,7 +37,7 @@ class QAOASampling(Sampling):
             ch1 = ps_gates
             ch2 =  qubit_connections[:num_gates]
             individual = QAOAindividual(ch1, ch2)
-            individual.times = problem.node_time
+            individual.times = problem.node_times
             pop[i, 0] = individual
         
         return pop

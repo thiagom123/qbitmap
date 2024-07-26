@@ -14,7 +14,11 @@ edges = [(0, 1), (1, 2), (2, 0), (5,0), (4,5), (3,5), (1,3)]
 graph.add_nodes_from(nodes)
 graph.add_edges_from(edges)
 
-problem = QAOAmaxcut(graph=graph)
+hardware = 'IBM27q'
+devices = QuantumDevices()
+hardware_graph = devices[hardware]
+
+problem = QAOAmaxcut(graph=graph, hardware_graph=hardware_graph)
 
 algorithm = GA(pop_size=50,
                sampling=QAOASampling(),

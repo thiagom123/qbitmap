@@ -9,9 +9,11 @@ from quantum_devices import QuantumDevices
 #before decoding: ch1: [(1, 2), (0, 1), (0, 2)] ch2: [(10, 12), (12, 15), (4, 7)] deu pau aqui
 
 class QAOAmaxcut(ElementwiseProblem):
-    def __init__(self, graph, hardware = 'IBM27q',  op_times = [1, 2, 3, 4], initial_qubitmap = None, initial_node_times = None):
+    def __init__(self, graph, hardware_graph,  op_times = [1, 2, 3, 4], initial_qubitmap = None, initial_node_times = None):
 
         self.ps_gates = list(graph.edges)
+        if(graph.number_of_nodes() == 0):
+            raise ValueError("Graph with zero nodes")
         if initial_node_times == None:
             self.initial_node_times = np.zeros(graph.number_of_nodes())
         else:
@@ -21,8 +23,11 @@ class QAOAmaxcut(ElementwiseProblem):
         self.num_gates = len(self.ps_gates)
         self.op_times = op_times
 
-        self.devices = QuantumDevices()
-        self.QM = self.devices[hardware]
+        #self.devices = QuantumDevices()
+        #self.QM = self.devices[hardware]
+        if(hardware_graph.number_of_nodes()==0):
+            raise ValueError("Hardware with zero qubits")
+        self.QM = hardware_graph
         self.num_qubits = self.QM.number_of_nodes()
 
         #Check if choosen device is qualified

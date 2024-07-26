@@ -17,3 +17,5 @@ res = minimize(problem,
                algorithm,
                seed=1,
                verbose=False)
+
+## ACHO QUE PODEMOS DELETAR ESSE ARQUIVO
