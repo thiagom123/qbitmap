@@ -61,10 +61,10 @@ class QAOAmaxcut(ElementwiseProblem):
         ch2 = individual.ch2
         #times = individual.times
         #resetar qubit map e node time
-        self.qubitmap = self.initial_map
-        self.node_times = self.initial_node_times
+        qubitmap = individual.qubitmap
+        node_times = individual.node_times
         #print('before decoding: ch1:', ch1, 'ch2:', ch2, 'node times:', self.node_time)
-        self.decoding(ch1, ch2)
+        qubitmap, node_times = self.decoding(ch1, ch2, qubitmap, node_times)
         #print('after decoding:', self.node_time)
         fitness = max(self.node_times)
         individual.times = self.node_times
@@ -73,26 +73,30 @@ class QAOAmaxcut(ElementwiseProblem):
         out["F"] = fitness
     
 
-    def decoding(self, ch1, ch2):
+    def decoding(self, ch1, ch2, qubitmap=None, node_times=None):
         '''
         Decodes the chromossomes ch1, ch2 
         ch1: List of duples
         ch2: List of duples
         '''
-        mix_gates = list(range(len(self.node_times)))
+        if(node_times is None):
+            node_times = self.initial_node_times
+        if(qubitmap is None):
+            qubitmap = self.initial_map
+        mix_gates = list(range(len(node_times)))
         for k in range(self.num_gates):
             n_i, n_j = ch1[k][0], ch1[k][1]
             q_k, q_l = ch2[k][0], ch2[k][1]
-            q_ni, q_nj = self.qubitmap[n_i], self.qubitmap[n_j]
+            q_ni, q_nj = qubitmap[n_i], qubitmap[n_j]
             path_i, path_j = self._calculate_minimal_paths(q_ni, q_nj, q_k, q_l)
             d_ni, d_nj = path_i[-1], path_j[-1]
             while (q_ni!=d_ni) or (q_nj!=d_nj):
                 q, q1 = self._next_qubits(path_i, path_j, q_ni, q_nj)
                 if [q, q1] != [q_ni, q_nj] and [q, q1] != [q_nj, q_ni]:
-                    if(q1 in self.qubitmap):
-                        self._add_swaps2(q, q1, k)
+                    if(q1 in qubitmap):
+                        self._add_swaps2(q, q1, k, qubitmap, node_times)
                     else:
-                        self._add_swaps1(q, q1, k)
+                        self._add_swaps1(q, q1, k, qubitmap, node_times)
                     if q == q_ni:
                         q_ni = q1
                     elif q == q_nj:
@@ -105,10 +109,10 @@ class QAOAmaxcut(ElementwiseProblem):
                         path_i, path_j = self._swap_paths(path_i, path_j, q)
                     #update final destinations
                     d_ni, d_nj = path_i[-1], path_j[-1]
-            self._add_ps(n_i, n_j)
-            mix_gates = self._add_mix_new(mix_gates, ch1, k)        
+            self._add_ps(n_i, n_j, node_times)
+            mix_gates = self._add_mix_new(mix_gates, ch1, k, node_times)        
             
-        return
+        return qubitmap, node_times
         
     def _calculate_minimal_paths(self, q_ni, q_nj, q_k, q_l):
         '''
@@ -170,56 +174,56 @@ class QAOAmaxcut(ElementwiseProblem):
 
         return path_i, path_j
     
-    def _add_swaps1(self, q, q1, k):
+    def _add_swaps1(self, q, q1, k, qubitmap, node_times):
         '''
         Add the swaps. Only the qubit q is occupied by a node.
         '''
-        n = self.qubitmap.index(q)
-        self.qubitmap[n] = q1
-        self.node_times[n] += time_swap
+        n = qubitmap.index(q)
+        qubitmap[n] = q1
+        node_times[n] += time_swap
         print("SWAP", n)
-        print("times", self.node_times)
+        print("times", node_times)
         #self.last_gate[n]='swap'
         return
 
-    def _add_swaps2(self, q, q1, k):
+    def _add_swaps2(self, q, q1, k, qubitmap, node_times):
         '''
         Add the swaps. Both qubits q and q1 are occupied by a node.
         '''
-        n = self.qubitmap.index(q)
-        n1 = self.qubitmap.index(q1)
+        n = qubitmap.index(q)
+        n1 = qubitmap.index(q1)
         #Swap qubits
-        self.qubitmap[n] = q1
-        self.qubitmap[n1] = q
+        qubitmap[n] = q1
+        qubitmap[n1] = q
         #Add time on nodes
-        max_time=max(self.node_times[n], self.node_times[n1])
-        self.node_times[n1] = max_time+time_swap
-        self.node_times[n] = max_time+time_swap
+        max_time=max(node_times[n], node_times[n1])
+        node_times[n1] = max_time+time_swap
+        node_times[n] = max_time+time_swap
         print("SWAP", n, n1)
-        print("times", self.node_times)
+        print("times", node_times)
         #self.last_gate[n1] = 'swap'
         #self.last_gate[n] = 'swap'
         return
 
 
     
-    def _add_ps(self, n, n1):
-        max_time=max(self.node_times[n], self.node_times[n1])
-        self.node_times[n1] = max_time+time_ps
-        self.node_times[n] = max_time+time_ps
+    def _add_ps(self, n, n1, node_times):
+        max_time=max(node_times[n], node_times[n1])
+        node_times[n1] = max_time+time_ps
+        node_times[n] = max_time+time_ps
         #self.last_gate[n1] = 'ps'
         #self.last_gate[n] = 'ps'
         print("P-S", n, n1)
-        print("times", self.node_times)
+        print("times", node_times)
         return
     
-    def _add_mix(self):
+    #def _add_mix(self):
         #print(self.node_time)
-        self.node_times = [x+time_mix for x in self.node_times]
+    #    node_times = [x+time_mix for x in node_times]
         #self.last_gate = ['mix' for x in self.last_gate]
-        return
+    #    return
     
-    def _add_mix_new(self, mix_gates, ch1, k):
+    def _add_mix_new(self, mix_gates, ch1, k, node_times):
         #print(self.node_time)
         mix_gates_copy = mix_gates.copy()
         ps_gates = ch1[k+1:]
@@ -233,10 +237,10 @@ class QAOAmaxcut(ElementwiseProblem):
                 #        if n==ch1[i][j]:
                 #            remove = False
                 #if(remove):
-                self.node_times[n] += time_mix
+                node_times[n] += time_mix
                 mix_gates.remove(n)
                 print("mix ", n)
-                print(self.node_times)
+                print(node_times)
                 print("remain ", mix_gates)
             #else:
             #    print("not yet ", n)
