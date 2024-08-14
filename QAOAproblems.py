@@ -13,18 +13,18 @@ time_swap = 2
 time_mix=1
 
 class QAOAmaxcut(ElementwiseProblem):
-    def __init__(self, graph, hardware_graph,  op_times = [1, 2, 3, 4], initial_qubitmap = None, initial_node_times = None):
+    def __init__(self, graph, hardware_graph, initial_qubitmap = None, initial_node_times = None):
 
-        self.ps_gates = list(graph.edges)
+        #self.ps_gates = list(graph.edges)
         if(graph.number_of_nodes() == 0):
             raise ValueError("Graph with zero nodes")
         if initial_node_times == None:
             self.initial_node_times = np.zeros(graph.number_of_nodes())
         else:
             self.initial_node_times = initial_node_times
-        self.node_times = self.initial_node_times
+        #self.node_times = self.initial_node_times
 
-        self.num_gates = len(self.ps_gates)
+        self.num_gates = len(list(graph.edges))
         #self.op_times = op_times
 
         #self.devices = QuantumDevices()
@@ -36,14 +36,14 @@ class QAOAmaxcut(ElementwiseProblem):
 
         #Check if choosen device is qualified
         if graph.number_of_nodes() > self.num_qubits:
-            print("Error: Job requires more qubits than available by choosen device.")
+            raise ValueError("Job requires more qubits than available by choosen device.")
 
         # Creates initial mapping None or picks current map if available
         if initial_qubitmap == None:
             self.initial_map = list(range(graph.number_of_nodes()))
             # map index is graph node, map value is hardware qubit
         else: self.initial_map = initial_qubitmap
-        self.qubitmap = self.initial_map
+        #self.qubitmap = self.initial_map
 
         super().__init__(n_var=1, # graph.number_of_nodes()
                          n_obj=1, n_constr=0,
@@ -59,16 +59,17 @@ class QAOAmaxcut(ElementwiseProblem):
         individual = X[0]
         ch1 = individual.ch1
         ch2 = individual.ch2
-        #times = individual.times
         #resetar qubit map e node time
-        qubitmap = individual.qubitmap
-        node_times = individual.node_times
+        #qubitmap = individual.qubitmap
+        #node_times = individual.node_times
+        qubitmap = self.initial_map
+        node_times = self.initial_node_times
         #print('before decoding: ch1:', ch1, 'ch2:', ch2, 'node times:', self.node_time)
         qubitmap, node_times = self.decoding(ch1, ch2, qubitmap, node_times)
         #print('after decoding:', self.node_time)
-        fitness = max(self.node_times)
-        individual.times = self.node_times
-        individual.qubitmap = self.qubitmap
+        fitness = max(node_times)
+        individual.times = node_times
+        individual.qubitmap = qubitmap
 
         out["F"] = fitness
     
@@ -181,8 +182,8 @@ class QAOAmaxcut(ElementwiseProblem):
         n = qubitmap.index(q)
         qubitmap[n] = q1
         node_times[n] += time_swap
-        print("SWAP", n)
-        print("times", node_times)
+        #print("SWAP", n)
+        #print("times", node_times)
         #self.last_gate[n]='swap'
         return
 
@@ -199,8 +200,8 @@ class QAOAmaxcut(ElementwiseProblem):
         max_time=max(node_times[n], node_times[n1])
         node_times[n1] = max_time+time_swap
         node_times[n] = max_time+time_swap
-        print("SWAP", n, n1)
-        print("times", node_times)
+        #print("SWAP", n, n1)
+        #print("times", node_times)
         #self.last_gate[n1] = 'swap'
         #self.last_gate[n] = 'swap'
         return
@@ -208,13 +209,16 @@ class QAOAmaxcut(ElementwiseProblem):
 
     
     def _add_ps(self, n, n1, node_times):
+        '''
+        Add a p-s gate to both qubits
+        '''
         max_time=max(node_times[n], node_times[n1])
         node_times[n1] = max_time+time_ps
         node_times[n] = max_time+time_ps
         #self.last_gate[n1] = 'ps'
         #self.last_gate[n] = 'ps'
-        print("P-S", n, n1)
-        print("times", node_times)
+        #print("P-S", n, n1)
+        #print("times", node_times)
         return
     
     #def _add_mix(self):
@@ -224,11 +228,14 @@ class QAOAmaxcut(ElementwiseProblem):
     #    return
     
     def _add_mix_new(self, mix_gates, ch1, k, node_times):
+        '''
+        Add a mix gate to all qubits that no longer require p-s gates
+        '''
         #print(self.node_time)
         mix_gates_copy = mix_gates.copy()
         ps_gates = ch1[k+1:]
-        print("next ps", ps_gates)
-        print("next mix", mix_gates)
+        #print("next ps", ps_gates)
+        #print("next mix", mix_gates)
         for n in mix_gates_copy:
             #remove = True
             if all(t[0]!=n and t[1]!=n for t in ps_gates):
@@ -239,9 +246,9 @@ class QAOAmaxcut(ElementwiseProblem):
                 #if(remove):
                 node_times[n] += time_mix
                 mix_gates.remove(n)
-                print("mix ", n)
-                print(node_times)
-                print("remain ", mix_gates)
+                #print("mix ", n)
+                #print(node_times)
+                #print("remain ", mix_gates)
             #else:
             #    print("not yet ", n)
         #self.last_gate = ['mix' for x in self.last_gate]
