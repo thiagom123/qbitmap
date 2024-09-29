@@ -12,7 +12,7 @@ time_ps=3
 time_swap = 2
 time_mix=1
 
-teste = True
+teste = False
 
 class QAOAmaxcut(ElementwiseProblem):
     def __init__(self, graph, hardware_graph, initial_qubitmap = None, initial_node_times = None):
@@ -64,8 +64,8 @@ class QAOAmaxcut(ElementwiseProblem):
         #resetar qubit map e node time
         #qubitmap = individual.qubitmap
         #node_times = individual.node_times
-        qubitmap = self.initial_map
-        node_times = self.initial_node_times
+        qubitmap = self.initial_map.copy()
+        node_times = self.initial_node_times.copy()
         if(teste): print('before decoding:', individual.times, self.initial_node_times)
         qubitmap, node_times = self.decoding(ch1, ch2, qubitmap, node_times)
         #print('after decoding:', self.node_time)
@@ -84,9 +84,9 @@ class QAOAmaxcut(ElementwiseProblem):
         ch2: List of duples
         '''
         if(node_times is None):
-            node_times = self.initial_node_times
+            node_times = self.initial_node_times.copy()
         if(qubitmap is None):
-            qubitmap = self.initial_map
+            qubitmap = self.initial_map.copy()
         mix_gates = list(range(len(node_times)))
         #No lugar de last_gates, poderia até salvar todos os gates
         last_gates = ['0' for x in range(len(node_times))]
