@@ -6,6 +6,7 @@ from pymoo.core.crossover import Crossover
 from pymoo.core.mutation import Mutation
 from pymoo.core.duplicate import ElementwiseDuplicateElimination
 
+teste = False
 class QAOAindividual:
 
     def __init__(self,ch1, ch2):
@@ -75,6 +76,14 @@ class QAOAPMX(Crossover):
             # parent 2 genes
             ch1_p2 = p2.ch1
             ch2_p2 = p2.ch2
+            if(teste):
+                print("Parent 1")
+                print(ch1_p1)
+                print(ch2_p1)
+                print("Parent 2")
+                print(ch1_p2)
+                print(ch2_p2)
+
 
             # offspring 1 genes
             ch1_off1 = [0] * num_gates

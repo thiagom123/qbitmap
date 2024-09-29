@@ -42,7 +42,7 @@ class QCCP:
         r_qubits = []
         for round in range(self.r):
             print("round ", round)
-            print("current times: ", self.problem.initial_node_times) 
+            #print("current times: ", self.problem.initial_node_times) 
 
             self.SGr = minimize(self.problem, self.algorithm)
             
