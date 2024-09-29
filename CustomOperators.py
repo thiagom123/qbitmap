@@ -113,8 +113,8 @@ class QAOAPMX(Crossover):
                 else:
                     while count_off2 in indexes_p1:
                         count_off2 += 1
-                    ch1_off2[i] = ch1_p1[i]
-                    ch2_off2[i] = ch2_p1[i]
+                    ch1_off2[i] = ch1_p1[count_off2]
+                    ch2_off2[i] = ch2_p1[count_off2]
                     count_off2 += 1
             
             off_1 = QAOAindividual(ch1_off1,ch2_off1)
