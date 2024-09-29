@@ -20,7 +20,7 @@ hardware_graph = devices[hardware]
 
 problem = QAOAmaxcut(graph=graph, hardware_graph=hardware_graph)
 
-algorithm = GA(pop_size=2,
+algorithm = GA(pop_size=4,
                sampling=QAOASampling(),
                crossover = QAOAPMX(),
                mutation= QAOAMutation(),
@@ -30,6 +30,6 @@ algorithm = GA(pop_size=2,
 experiment = QCCP(graph,
                   problem,
                   algorithm,
-                  r = 1)
+                  r = 3)
 
 schedule = experiment.get_machine_schedule()
