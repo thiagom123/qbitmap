@@ -12,10 +12,12 @@ time_ps=3
 time_swap = 2
 time_mix=1
 
+teste = True
+
 class QAOAmaxcut(ElementwiseProblem):
     def __init__(self, graph, hardware_graph, initial_qubitmap = None, initial_node_times = None):
 
-        #self.ps_gates = list(graph.edges)
+        self.ps_gates = list(graph.edges)
         if(graph.number_of_nodes() == 0):
             raise ValueError("Graph with zero nodes")
         if initial_node_times == None:
@@ -87,7 +89,7 @@ class QAOAmaxcut(ElementwiseProblem):
         mix_gates = list(range(len(node_times)))
         #No lugar de last_gates, poderia até salvar todos os gates
         last_gates = ['0' for x in range(len(node_times))]
-        print(last_gates)
+        #if teste: print(last_gates)
         for k in range(self.num_gates):
             n_i, n_j = ch1[k][0], ch1[k][1]
             q_k, q_l = ch2[k][0], ch2[k][1]
@@ -99,10 +101,10 @@ class QAOAmaxcut(ElementwiseProblem):
                 if [q, q1] != [q_ni, q_nj] and [q, q1] != [q_nj, q_ni]:
                     if(q1 in qubitmap):
                         self._add_swaps2(q, q1,qubitmap, node_times, last_gates)
-                        print(last_gates)
+                        #print(last_gates)
                     else:
                         self._add_swaps1(q, q1, qubitmap, node_times, last_gates)
-                        print(last_gates)
+                        #print(last_gates)
                     if q == q_ni:
                         q_ni = q1
                     elif q == q_nj:
@@ -117,7 +119,7 @@ class QAOAmaxcut(ElementwiseProblem):
                     d_ni, d_nj = path_i[-1], path_j[-1]
             self._add_ps(n_i, n_j, node_times, last_gates)
             mix_gates = self._add_mix_new(mix_gates, ch1, k, node_times, last_gates)
-            print(last_gates)       
+            #print(last_gates)       
             
         return qubitmap, node_times
         
