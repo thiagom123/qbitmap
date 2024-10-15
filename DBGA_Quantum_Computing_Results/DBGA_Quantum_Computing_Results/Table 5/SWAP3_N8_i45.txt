@@ -1,0 +1,81 @@
+39 8 39.2 39 8 40 2 0.421637 57 29 17141 8333 0
+
+Makespan 1: 39
+p-s q1: 1 q2: 2 qb1: 1 qb2: 2 init: 0  time: 3; 
+swap q1: 1 q2: 4 qb1: 1 qb2: 4 init: 3  time: 3; 
+p-s q1: 1 q2: 7 qb1: 4 qb2: 6 init: 6  time: 4; 
+swap q1: 4 q2: 1 qb1: 1 qb2: 4 init: 10  time: 3; 
+p-s q1: 1 q2: 8 qb1: 1 qb2: 2 init: 13  time: 3; 
+p-s q1: 1 q2: 4 qb1: 1 qb2: 4 init: 18  time: 3; 
+mix q1: 1 q2: 0 qb1: 1 qb2: 1 init: 21  time: 1; 
+p-s q1: 1 q2: 4 qb1: 1 qb2: 4 init: 22  time: 3; 
+p-s q1: 1 q2: 8 qb1: 1 qb2: 2 init: 25  time: 3; 
+p-s q1: 1 q2: 7 qb1: 1 qb2: 4 init: 28  time: 3; 
+swap q1: 8 q2: 1 qb1: 2 qb2: 1 init: 31  time: 3; 
+p-s q1: 1 q2: 2 qb1: 2 qb2: 3 init: 34  time: 4; 
+mix q1: 1 q2: 0 qb1: 2 qb2: 2 init: 38  time: 1; 
+
+Makespan 2: 39
+p-s q1: 1 q2: 2 qb1: 1 qb2: 2 init: 0  time: 3; 
+swap q1: 8 q2: 2 qb1: 3 qb2: 2 init: 9  time: 3; 
+p-s q1: 2 q2: 8 qb1: 3 qb2: 2 init: 16  time: 4; 
+mix q1: 2 q2: 0 qb1: 3 qb2: 3 init: 20  time: 1; 
+p-s q1: 2 q2: 8 qb1: 3 qb2: 2 init: 21  time: 4; 
+p-s q1: 1 q2: 2 qb1: 2 qb2: 3 init: 34  time: 4; 
+mix q1: 2 q2: 0 qb1: 3 qb2: 3 init: 38  time: 1; 
+
+Makespan 3: 24
+swap q1: 3 q2: 5 qb1: 3 qb2: 5 init: 0  time: 3; 
+swap q1: 3 q2: 8 qb1: 5 qb2: 8 init: 3  time: 3; 
+swap q1: 3 q2: 6 qb1: 8 qb2: 7 init: 6  time: 3; 
+p-s q1: 3 q2: 7 qb1: 7 qb2: 6 init: 10  time: 4; 
+mix q1: 3 q2: 0 qb1: 7 qb2: 7 init: 14  time: 1; 
+p-s q1: 3 q2: 7 qb1: 7 qb2: 6 init: 19  time: 4; 
+mix q1: 3 q2: 0 qb1: 7 qb2: 7 init: 23  time: 1; 
+
+Makespan 4: 36
+swap q1: 1 q2: 4 qb1: 1 qb2: 4 init: 3  time: 3; 
+swap q1: 4 q2: 1 qb1: 1 qb2: 4 init: 10  time: 3; 
+p-s q1: 4 q2: 7 qb1: 4 qb2: 6 init: 14  time: 4; 
+p-s q1: 1 q2: 4 qb1: 1 qb2: 4 init: 18  time: 3; 
+mix q1: 4 q2: 0 qb1: 4 qb2: 4 init: 21  time: 1; 
+p-s q1: 1 q2: 4 qb1: 1 qb2: 4 init: 22  time: 3; 
+swap q1: 7 q2: 4 qb1: 6 qb2: 4 init: 25  time: 3; 
+p-s q1: 4 q2: 7 qb1: 6 qb2: 4 init: 31  time: 4; 
+mix q1: 4 q2: 0 qb1: 6 qb2: 6 init: 35  time: 1; 
+
+Makespan 5: 9
+swap q1: 3 q2: 5 qb1: 3 qb2: 5 init: 0  time: 3; 
+swap q1: 8 q2: 5 qb1: 5 qb2: 3 init: 6  time: 3; 
+
+Makespan 6: 9
+swap q1: 7 q2: 6 qb1: 7 qb2: 6 init: 3  time: 3; 
+swap q1: 3 q2: 6 qb1: 8 qb2: 7 init: 6  time: 3; 
+
+Makespan 7: 39
+p-s q1: 7 q2: 8 qb1: 7 qb2: 8 init: 0  time: 3; 
+swap q1: 7 q2: 6 qb1: 7 qb2: 6 init: 3  time: 3; 
+p-s q1: 1 q2: 7 qb1: 4 qb2: 6 init: 6  time: 4; 
+p-s q1: 3 q2: 7 qb1: 7 qb2: 6 init: 10  time: 4; 
+p-s q1: 4 q2: 7 qb1: 4 qb2: 6 init: 14  time: 4; 
+mix q1: 7 q2: 0 qb1: 6 qb2: 6 init: 18  time: 1; 
+p-s q1: 3 q2: 7 qb1: 7 qb2: 6 init: 19  time: 4; 
+swap q1: 7 q2: 4 qb1: 6 qb2: 4 init: 25  time: 3; 
+p-s q1: 1 q2: 7 qb1: 1 qb2: 4 init: 28  time: 3; 
+p-s q1: 4 q2: 7 qb1: 6 qb2: 4 init: 31  time: 4; 
+p-s q1: 7 q2: 8 qb1: 4 qb2: 1 init: 35  time: 3; 
+mix q1: 7 q2: 0 qb1: 4 qb2: 4 init: 38  time: 1; 
+
+Makespan 8: 39
+p-s q1: 7 q2: 8 qb1: 7 qb2: 8 init: 0  time: 3; 
+swap q1: 3 q2: 8 qb1: 5 qb2: 8 init: 3  time: 3; 
+swap q1: 8 q2: 5 qb1: 5 qb2: 3 init: 6  time: 3; 
+swap q1: 8 q2: 2 qb1: 3 qb2: 2 init: 9  time: 3; 
+p-s q1: 1 q2: 8 qb1: 1 qb2: 2 init: 13  time: 3; 
+p-s q1: 2 q2: 8 qb1: 3 qb2: 2 init: 16  time: 4; 
+mix q1: 8 q2: 0 qb1: 2 qb2: 2 init: 20  time: 1; 
+p-s q1: 2 q2: 8 qb1: 3 qb2: 2 init: 21  time: 4; 
+p-s q1: 1 q2: 8 qb1: 1 qb2: 2 init: 25  time: 3; 
+swap q1: 8 q2: 1 qb1: 2 qb2: 1 init: 31  time: 3; 
+p-s q1: 7 q2: 8 qb1: 4 qb2: 1 init: 35  time: 3; 
+mix q1: 8 q2: 0 qb1: 1 qb2: 1 init: 38  time: 1; 

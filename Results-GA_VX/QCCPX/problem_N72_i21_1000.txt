@@ -1,0 +1,792 @@
+88 99.2 109 6.51153 7179 42205
+
+Makespan 1: 58
+SWAP q1: 1 q2: 7 qb1: 1 qb2: 7 init: 0  time: 2; 
+SWAP q1: 1 q2: 13 qb1: 7 qb2: 13 init: 4  time: 2; 
+SWAP q1: 1 q2: 25 qb1: 13 qb2: 19 init: 13  time: 2; 
+PS q1: 39 q2: 1 qb1: 26 qb2: 19 init: 22  time: 3; 
+SWAP q1: 3 q2: 1 qb1: 14 qb2: 19 init: 48  time: 2; 
+SWAP q1: 7 q2: 1 qb1: 7 qb2: 14 init: 53  time: 2; 
+SWAP q1: 13 q2: 1 qb1: 1 qb2: 7 init: 55  time: 2; 
+MIX q1: 1 qb1: 1 init: 57  time: 1; 
+
+Makespan 2: 85
+SWAP q1: 2 q2: 14 qb1: 2 qb2: 8 init: 9  time: 2; 
+SWAP q1: 2 q2: 3 qb1: 8 qb2: 3 init: 11  time: 2; 
+PS q1: 2 q2: 22 qb1: 3 qb2: 9 init: 17  time: 0; 
+SWAP q1: 3 q2: 2 qb1: 8 qb2: 3 init: 27  time: 2; 
+SWAP q1: 3 q2: 2 qb1: 3 qb2: 8 init: 36  time: 2; 
+PS q1: 2 q2: 46 qb1: 3 qb2: 9 init: 49  time: 0; 
+SWAP q1: 21 q2: 2 qb1: 9 qb2: 3 init: 82  time: 2; 
+MIX q1: 2 qb1: 9 init: 84  time: 1; 
+
+Makespan 3: 80
+SWAP q1: 2 q2: 3 qb1: 8 qb2: 3 init: 11  time: 2; 
+SWAP q1: 3 q2: 2 qb1: 8 qb2: 3 init: 27  time: 2; 
+PS q1: 3 q2: 24 qb1: 3 qb2: 9 init: 36  time: 0; 
+SWAP q1: 3 q2: 2 qb1: 3 qb2: 8 init: 36  time: 2; 
+SWAP q1: 3 q2: 19 qb1: 8 qb2: 14 init: 45  time: 2; 
+SWAP q1: 3 q2: 1 qb1: 14 qb2: 19 init: 48  time: 2; 
+PS q1: 3 q2: 38 qb1: 19 qb2: 25 init: 50  time: 3; 
+SWAP q1: 3 q2: 38 qb1: 19 qb2: 25 init: 60  time: 2; 
+PS q1: 3 q2: 69 qb1: 25 qb2: 31 init: 64  time: 3; 
+SWAP q1: 3 q2: 69 qb1: 25 qb2: 31 init: 67  time: 2; 
+PS q1: 62 q2: 3 qb1: 37 qb2: 31 init: 69  time: 3; 
+SWAP q1: 39 q2: 3 qb1: 26 qb2: 31 init: 74  time: 2; 
+MIX q1: 3 qb1: 26 init: 79  time: 1; 
+
+Makespan 4: 85
+SWAP q1: 4 q2: 22 qb1: 4 qb2: 9 init: 19  time: 2; 
+SWAP q1: 4 q2: 15 qb1: 9 qb2: 15 init: 21  time: 2; 
+PS q1: 4 q2: 28 qb1: 15 qb2: 21 init: 24  time: 3; 
+SWAP q1: 31 q2: 4 qb1: 20 qb2: 15 init: 38  time: 2; 
+SWAP q1: 4 q2: 39 qb1: 20 qb2: 26 init: 43  time: 2; 
+PS q1: 4 q2: 37 qb1: 26 qb2: 31 init: 45  time: 3; 
+SWAP q1: 49 q2: 4 qb1: 31 qb2: 26 init: 53  time: 2; 
+SWAP q1: 69 q2: 4 qb1: 38 qb2: 31 init: 62  time: 2; 
+SWAP q1: 58 q2: 4 qb1: 44 qb2: 38 init: 79  time: 2; 
+MIX q1: 4 qb1: 44 init: 84  time: 1; 
+
+Makespan 5: 57
+PS q1: 5 q2: 10 qb1: 5 qb2: 10 init: 0  time: 3; 
+SWAP q1: 21 q2: 5 qb1: 11 qb2: 5 init: 35  time: 2; 
+SWAP q1: 5 q2: 6 qb1: 11 qb2: 18 init: 41  time: 2; 
+PS q1: 5 q2: 30 qb1: 18 qb2: 24 init: 43  time: 3; 
+SWAP q1: 23 q2: 5 qb1: 23 qb2: 18 init: 51  time: 2; 
+MIX q1: 5 qb1: 23 init: 56  time: 1; 
+
+Makespan 6: 83
+SWAP q1: 11 q2: 6 qb1: 11 qb2: 6 init: 6  time: 2; 
+SWAP q1: 11 q2: 6 qb1: 6 qb2: 11 init: 13  time: 2; 
+PS q1: 6 q2: 17 qb1: 6 qb2: 11 init: 21  time: 3; 
+SWAP q1: 6 q2: 17 qb1: 6 qb2: 11 init: 26  time: 2; 
+PS q1: 6 q2: 12 qb1: 11 qb2: 6 init: 30  time: 3; 
+SWAP q1: 21 q2: 6 qb1: 18 qb2: 11 init: 33  time: 2; 
+SWAP q1: 5 q2: 6 qb1: 11 qb2: 18 init: 41  time: 2; 
+SWAP q1: 6 q2: 9 qb1: 11 qb2: 17 init: 47  time: 2; 
+PS q1: 6 q2: 55 qb1: 17 qb2: 22 init: 59  time: 3; 
+SWAP q1: 55 q2: 6 qb1: 22 qb2: 17 init: 70  time: 2; 
+MIX q1: 6 qb1: 22 init: 82  time: 1; 
+
+Makespan 7: 84
+SWAP q1: 1 q2: 7 qb1: 1 qb2: 7 init: 0  time: 2; 
+SWAP q1: 7 q2: 13 qb1: 1 qb2: 7 init: 11  time: 2; 
+SWAP q1: 7 q2: 1 qb1: 7 qb2: 14 init: 53  time: 2; 
+PS q1: 7 q2: 49 qb1: 14 qb2: 20 init: 57  time: 3; 
+SWAP q1: 7 q2: 56 qb1: 14 qb2: 20 init: 67  time: 2; 
+PS q1: 57 q2: 7 qb1: 27 qb2: 20 init: 80  time: 3; 
+MIX q1: 7 qb1: 20 init: 83  time: 1; 
+
+Makespan 8: 86
+SWAP q1: 8 q2: 14 qb1: 8 qb2: 14 init: 2  time: 2; 
+SWAP q1: 8 q2: 19 qb1: 14 qb2: 19 init: 7  time: 2; 
+SWAP q1: 8 q2: 25 qb1: 19 qb2: 25 init: 9  time: 2; 
+SWAP q1: 8 q2: 31 qb1: 25 qb2: 31 init: 11  time: 2; 
+PS q1: 70 q2: 8 qb1: 38 qb2: 31 init: 15  time: 3; 
+SWAP q1: 38 q2: 8 qb1: 38 qb2: 31 init: 25  time: 2; 
+PS q1: 45 q2: 8 qb1: 44 qb2: 38 init: 40  time: 3; 
+SWAP q1: 69 q2: 8 qb1: 44 qb2: 38 init: 59  time: 2; 
+SWAP q1: 58 q2: 8 qb1: 51 qb2: 44 init: 69  time: 2; 
+MIX q1: 8 qb1: 51 init: 85  time: 1; 
+
+Makespan 9: 59
+SWAP q1: 22 q2: 9 qb1: 16 qb2: 9 init: 15  time: 2; 
+SWAP q1: 24 q2: 9 qb1: 22 qb2: 16 init: 17  time: 2; 
+SWAP q1: 11 q2: 9 qb1: 17 qb2: 22 init: 24  time: 2; 
+SWAP q1: 6 q2: 9 qb1: 11 qb2: 17 init: 47  time: 2; 
+PS q1: 23 q2: 9 qb1: 18 qb2: 11 init: 53  time: 3; 
+SWAP q1: 12 q2: 9 qb1: 6 qb2: 11 init: 56  time: 2; 
+MIX q1: 9 qb1: 6 init: 58  time: 1; 
+
+Makespan 10: 46
+PS q1: 5 q2: 10 qb1: 5 qb2: 10 init: 0  time: 3; 
+PS q1: 21 q2: 10 qb1: 5 qb2: 10 init: 38  time: 3; 
+SWAP q1: 21 q2: 10 qb1: 5 qb2: 10 init: 43  time: 2; 
+MIX q1: 10 qb1: 5 init: 45  time: 1; 
+
+Makespan 11: 81
+SWAP q1: 11 q2: 6 qb1: 11 qb2: 6 init: 6  time: 2; 
+PS q1: 11 q2: 12 qb1: 6 qb2: 12 init: 8  time: 3; 
+SWAP q1: 11 q2: 6 qb1: 6 qb2: 11 init: 13  time: 2; 
+SWAP q1: 11 q2: 21 qb1: 11 qb2: 17 init: 15  time: 2; 
+SWAP q1: 11 q2: 9 qb1: 17 qb2: 22 init: 24  time: 2; 
+PS q1: 11 q2: 55 qb1: 22 qb2: 28 init: 40  time: 3; 
+SWAP q1: 46 q2: 11 qb1: 29 qb2: 22 init: 43  time: 2; 
+SWAP q1: 60 q2: 11 qb1: 35 qb2: 29 init: 47  time: 2; 
+SWAP q1: 11 q2: 29 qb1: 35 qb2: 42 init: 55  time: 2; 
+PS q1: 53 q2: 11 qb1: 48 qb2: 42 init: 57  time: 3; 
+SWAP q1: 61 q2: 11 qb1: 35 qb2: 42 init: 66  time: 2; 
+SWAP q1: 61 q2: 11 qb1: 42 qb2: 35 init: 75  time: 2; 
+MIX q1: 11 qb1: 42 init: 80  time: 1; 
+
+Makespan 12: 76
+PS q1: 11 q2: 12 qb1: 6 qb2: 12 init: 8  time: 3; 
+SWAP q1: 12 q2: 17 qb1: 12 qb2: 6 init: 28  time: 2; 
+PS q1: 6 q2: 12 qb1: 11 qb2: 6 init: 30  time: 3; 
+SWAP q1: 12 q2: 9 qb1: 6 qb2: 11 init: 56  time: 2; 
+PS q1: 12 q2: 55 qb1: 11 qb2: 17 init: 72  time: 3; 
+MIX q1: 12 qb1: 11 init: 75  time: 1; 
+
+Makespan 13: 85
+SWAP q1: 1 q2: 13 qb1: 7 qb2: 13 init: 4  time: 2; 
+SWAP q1: 7 q2: 13 qb1: 1 qb2: 7 init: 11  time: 2; 
+SWAP q1: 13 q2: 1 qb1: 1 qb2: 7 init: 55  time: 2; 
+SWAP q1: 13 q2: 14 qb1: 7 qb2: 2 init: 60  time: 2; 
+SWAP q1: 13 q2: 19 qb1: 2 qb2: 8 init: 62  time: 2; 
+PS q1: 21 q2: 13 qb1: 3 qb2: 8 init: 84  time: 0; 
+MIX q1: 13 qb1: 8 init: 84  time: 1; 
+
+Makespan 14: 62
+SWAP q1: 8 q2: 14 qb1: 8 qb2: 14 init: 2  time: 2; 
+SWAP q1: 2 q2: 14 qb1: 2 qb2: 8 init: 9  time: 2; 
+SWAP q1: 13 q2: 14 qb1: 7 qb2: 2 init: 60  time: 2; 
+
+Makespan 15: 85
+SWAP q1: 15 q2: 20 qb1: 15 qb2: 20 init: 0  time: 2; 
+PS q1: 15 q2: 33 qb1: 20 qb2: 27 init: 4  time: 3; 
+SWAP q1: 20 q2: 15 qb1: 15 qb2: 20 init: 17  time: 2; 
+SWAP q1: 4 q2: 15 qb1: 9 qb2: 15 init: 21  time: 2; 
+SWAP q1: 24 q2: 15 qb1: 16 qb2: 9 init: 34  time: 2; 
+SWAP q1: 15 q2: 61 qb1: 16 qb2: 21 init: 36  time: 2; 
+PS q1: 15 q2: 56 qb1: 21 qb2: 27 init: 49  time: 3; 
+SWAP q1: 49 q2: 15 qb1: 27 qb2: 21 init: 70  time: 2; 
+SWAP q1: 57 q2: 15 qb1: 33 qb2: 27 init: 78  time: 2; 
+MIX q1: 15 qb1: 33 init: 84  time: 1; 
+
+Makespan 16: 77
+SWAP q1: 16 q2: 21 qb1: 16 qb2: 21 init: 7  time: 2; 
+PS q1: 61 q2: 16 qb1: 27 qb2: 21 init: 12  time: 3; 
+SWAP q1: 16 q2: 28 qb1: 21 qb2: 28 init: 19  time: 2; 
+PS q1: 40 q2: 16 qb1: 33 qb2: 28 init: 21  time: 3; 
+SWAP q1: 55 q2: 16 qb1: 33 qb2: 28 init: 38  time: 2; 
+SWAP q1: 56 q2: 16 qb1: 39 qb2: 33 init: 45  time: 2; 
+SWAP q1: 50 q2: 16 qb1: 44 qb2: 39 init: 52  time: 2; 
+SWAP q1: 69 q2: 16 qb1: 51 qb2: 44 init: 57  time: 2; 
+SWAP q1: 58 q2: 16 qb1: 57 qb2: 51 init: 63  time: 2; 
+SWAP q1: 52 q2: 16 qb1: 64 qb2: 57 init: 71  time: 2; 
+MIX q1: 16 qb1: 64 init: 76  time: 1; 
+
+Makespan 17: 36
+SWAP q1: 24 q2: 17 qb1: 23 qb2: 17 init: 4  time: 2; 
+SWAP q1: 17 q2: 23 qb1: 23 qb2: 18 init: 17  time: 2; 
+SWAP q1: 17 q2: 21 qb1: 18 qb2: 11 init: 19  time: 2; 
+PS q1: 6 q2: 17 qb1: 6 qb2: 11 init: 21  time: 3; 
+SWAP q1: 6 q2: 17 qb1: 6 qb2: 11 init: 26  time: 2; 
+SWAP q1: 12 q2: 17 qb1: 12 qb2: 6 init: 28  time: 2; 
+MIX q1: 17 qb1: 12 init: 35  time: 1; 
+
+Makespan 18: 64
+SWAP q1: 24 q2: 18 qb1: 24 qb2: 18 init: 0  time: 2; 
+PS q1: 18 q2: 30 qb1: 24 qb2: 30 init: 6  time: 3; 
+SWAP q1: 18 q2: 30 qb1: 24 qb2: 30 init: 9  time: 2; 
+SWAP q1: 18 q2: 35 qb1: 30 qb2: 35 init: 11  time: 2; 
+PS q1: 18 q2: 47 qb1: 35 qb2: 41 init: 26  time: 3; 
+SWAP q1: 46 q2: 18 qb1: 42 qb2: 35 init: 29  time: 2; 
+SWAP q1: 60 q2: 18 qb1: 47 qb2: 42 init: 33  time: 2; 
+SWAP q1: 18 q2: 47 qb1: 47 qb2: 41 init: 38  time: 2; 
+SWAP q1: 18 q2: 42 qb1: 41 qb2: 46 init: 40  time: 2; 
+SWAP q1: 18 q2: 68 qb1: 46 qb2: 52 init: 45  time: 2; 
+PS q1: 18 q2: 69 qb1: 52 qb2: 57 init: 52  time: 3; 
+SWAP q1: 71 q2: 18 qb1: 58 qb2: 52 init: 57  time: 2; 
+MIX q1: 18 qb1: 58 init: 63  time: 1; 
+
+Makespan 19: 64
+SWAP q1: 8 q2: 19 qb1: 14 qb2: 19 init: 7  time: 2; 
+SWAP q1: 3 q2: 19 qb1: 8 qb2: 14 init: 45  time: 2; 
+SWAP q1: 13 q2: 19 qb1: 2 qb2: 8 init: 62  time: 2; 
+
+Makespan 20: 58
+SWAP q1: 15 q2: 20 qb1: 15 qb2: 20 init: 0  time: 2; 
+SWAP q1: 20 q2: 15 qb1: 15 qb2: 20 init: 17  time: 2; 
+SWAP q1: 20 q2: 39 qb1: 20 qb2: 26 init: 27  time: 2; 
+SWAP q1: 20 q2: 31 qb1: 26 qb2: 31 init: 31  time: 2; 
+PS q1: 20 q2: 38 qb1: 31 qb2: 25 init: 33  time: 3; 
+SWAP q1: 37 q2: 20 qb1: 37 qb2: 31 init: 38  time: 2; 
+SWAP q1: 49 q2: 20 qb1: 43 qb2: 37 init: 43  time: 2; 
+PS q1: 63 q2: 20 qb1: 49 qb2: 43 init: 45  time: 3; 
+SWAP q1: 62 q2: 20 qb1: 49 qb2: 43 init: 53  time: 2; 
+MIX q1: 20 qb1: 49 init: 57  time: 1; 
+
+Makespan 21: 86
+SWAP q1: 16 q2: 21 qb1: 16 qb2: 21 init: 7  time: 2; 
+SWAP q1: 22 q2: 21 qb1: 22 qb2: 16 init: 9  time: 2; 
+SWAP q1: 24 q2: 21 qb1: 17 qb2: 22 init: 11  time: 2; 
+SWAP q1: 11 q2: 21 qb1: 11 qb2: 17 init: 15  time: 2; 
+SWAP q1: 17 q2: 21 qb1: 18 qb2: 11 init: 19  time: 2; 
+SWAP q1: 21 q2: 6 qb1: 18 qb2: 11 init: 33  time: 2; 
+SWAP q1: 21 q2: 5 qb1: 11 qb2: 5 init: 35  time: 2; 
+PS q1: 21 q2: 10 qb1: 5 qb2: 10 init: 38  time: 3; 
+SWAP q1: 21 q2: 10 qb1: 5 qb2: 10 init: 43  time: 2; 
+SWAP q1: 21 q2: 60 qb1: 10 qb2: 16 init: 78  time: 2; 
+SWAP q1: 21 q2: 31 qb1: 16 qb2: 9 init: 80  time: 2; 
+SWAP q1: 21 q2: 2 qb1: 9 qb2: 3 init: 82  time: 2; 
+PS q1: 21 q2: 13 qb1: 3 qb2: 8 init: 84  time: 0; 
+MIX q1: 21 qb1: 3 init: 85  time: 1; 
+
+Makespan 22: 79
+SWAP q1: 22 q2: 21 qb1: 22 qb2: 16 init: 9  time: 2; 
+SWAP q1: 22 q2: 9 qb1: 16 qb2: 9 init: 15  time: 2; 
+PS q1: 2 q2: 22 qb1: 3 qb2: 9 init: 17  time: 0; 
+SWAP q1: 4 q2: 22 qb1: 4 qb2: 9 init: 19  time: 2; 
+SWAP q1: 22 q2: 46 qb1: 4 qb2: 9 init: 49  time: 2; 
+PS q1: 60 q2: 22 qb1: 16 qb2: 9 init: 54  time: 3; 
+SWAP q1: 22 q2: 31 qb1: 9 qb2: 15 init: 60  time: 2; 
+PS q1: 56 q2: 22 qb1: 20 qb2: 15 init: 64  time: 3; 
+MIX q1: 22 qb1: 15 init: 78  time: 1; 
+
+Makespan 23: 59
+SWAP q1: 24 q2: 23 qb1: 18 qb2: 23 init: 2  time: 2; 
+SWAP q1: 17 q2: 23 qb1: 23 qb2: 18 init: 17  time: 2; 
+SWAP q1: 23 q2: 5 qb1: 23 qb2: 18 init: 51  time: 2; 
+PS q1: 23 q2: 9 qb1: 18 qb2: 11 init: 53  time: 3; 
+MIX q1: 23 qb1: 18 init: 58  time: 1; 
+
+Makespan 24: 67
+SWAP q1: 24 q2: 18 qb1: 24 qb2: 18 init: 0  time: 2; 
+SWAP q1: 24 q2: 23 qb1: 18 qb2: 23 init: 2  time: 2; 
+SWAP q1: 24 q2: 17 qb1: 23 qb2: 17 init: 4  time: 2; 
+SWAP q1: 24 q2: 21 qb1: 17 qb2: 22 init: 11  time: 2; 
+SWAP q1: 24 q2: 9 qb1: 22 qb2: 16 init: 17  time: 2; 
+PS q1: 61 q2: 24 qb1: 21 qb2: 16 init: 31  time: 3; 
+SWAP q1: 24 q2: 15 qb1: 16 qb2: 9 init: 34  time: 2; 
+PS q1: 3 q2: 24 qb1: 3 qb2: 9 init: 36  time: 0; 
+PS q1: 31 q2: 24 qb1: 15 qb2: 9 init: 40  time: 3; 
+SWAP q1: 46 q2: 24 qb1: 16 qb2: 9 init: 47  time: 2; 
+SWAP q1: 60 q2: 24 qb1: 22 qb2: 16 init: 52  time: 2; 
+SWAP q1: 55 q2: 24 qb1: 28 qb2: 22 init: 57  time: 2; 
+SWAP q1: 54 q2: 24 qb1: 34 qb2: 28 init: 62  time: 2; 
+MIX q1: 24 qb1: 34 init: 66  time: 1; 
+
+Makespan 25: 87
+SWAP q1: 8 q2: 25 qb1: 19 qb2: 25 init: 9  time: 2; 
+SWAP q1: 1 q2: 25 qb1: 13 qb2: 19 init: 13  time: 2; 
+SWAP q1: 25 q2: 38 qb1: 13 qb2: 19 init: 62  time: 2; 
+SWAP q1: 25 q2: 69 qb1: 19 qb2: 25 init: 72  time: 2; 
+PS q1: 25 q2: 58 qb1: 25 qb2: 31 init: 83  time: 3; 
+MIX q1: 25 qb1: 25 init: 86  time: 1; 
+
+Makespan 26: 86
+SWAP q1: 39 q2: 26 qb1: 32 qb2: 26 init: 20  time: 2; 
+SWAP q1: 26 q2: 50 qb1: 32 qb2: 39 init: 64  time: 2; 
+PS q1: 71 q2: 26 qb1: 45 qb2: 39 init: 66  time: 3; 
+PS q1: 58 q2: 26 qb1: 44 qb2: 39 init: 71  time: 3; 
+PS q1: 34 q2: 26 qb1: 45 qb2: 39 init: 81  time: 3; 
+MIX q1: 26 qb1: 39 init: 85  time: 1; 
+
+Makespan 27: 79
+SWAP q1: 33 q2: 27 qb1: 33 qb2: 27 init: 2  time: 2; 
+SWAP q1: 40 q2: 27 qb1: 40 qb2: 33 init: 16  time: 2; 
+SWAP q1: 34 q2: 27 qb1: 34 qb2: 40 init: 34  time: 2; 
+SWAP q1: 54 q2: 27 qb1: 41 qb2: 34 init: 52  time: 2; 
+SWAP q1: 27 q2: 42 qb1: 41 qb2: 47 init: 71  time: 2; 
+SWAP q1: 27 q2: 68 qb1: 47 qb2: 53 init: 73  time: 2; 
+PS q1: 44 q2: 27 qb1: 59 qb2: 53 init: 75  time: 3; 
+MIX q1: 27 qb1: 53 init: 78  time: 1; 
+
+Makespan 28: 81
+PS q1: 47 q2: 28 qb1: 34 qb2: 28 init: 4  time: 3; 
+SWAP q1: 16 q2: 28 qb1: 21 qb2: 28 init: 19  time: 2; 
+PS q1: 4 q2: 28 qb1: 15 qb2: 21 init: 24  time: 3; 
+SWAP q1: 61 q2: 28 qb1: 27 qb2: 21 init: 29  time: 2; 
+SWAP q1: 56 q2: 28 qb1: 33 qb2: 27 init: 47  time: 2; 
+PS q1: 50 q2: 28 qb1: 39 qb2: 33 init: 54  time: 3; 
+SWAP q1: 57 q2: 28 qb1: 40 qb2: 33 init: 75  time: 2; 
+MIX q1: 28 qb1: 40 init: 80  time: 1; 
+
+Makespan 29: 66
+SWAP q1: 46 q2: 29 qb1: 35 qb2: 29 init: 31  time: 2; 
+SWAP q1: 60 q2: 29 qb1: 42 qb2: 35 init: 35  time: 2; 
+SWAP q1: 11 q2: 29 qb1: 35 qb2: 42 init: 55  time: 2; 
+SWAP q1: 61 q2: 29 qb1: 29 qb2: 35 init: 64  time: 2; 
+
+Makespan 30: 47
+PS q1: 18 q2: 30 qb1: 24 qb2: 30 init: 6  time: 3; 
+SWAP q1: 18 q2: 30 qb1: 24 qb2: 30 init: 9  time: 2; 
+PS q1: 5 q2: 30 qb1: 18 qb2: 24 init: 43  time: 3; 
+MIX q1: 30 qb1: 24 init: 46  time: 1; 
+
+Makespan 31: 86
+SWAP q1: 8 q2: 31 qb1: 25 qb2: 31 init: 11  time: 2; 
+SWAP q1: 38 q2: 31 qb1: 31 qb2: 25 init: 29  time: 2; 
+SWAP q1: 20 q2: 31 qb1: 26 qb2: 31 init: 31  time: 2; 
+SWAP q1: 31 q2: 39 qb1: 26 qb2: 20 init: 36  time: 2; 
+SWAP q1: 31 q2: 4 qb1: 20 qb2: 15 init: 38  time: 2; 
+PS q1: 31 q2: 24 qb1: 15 qb2: 9 init: 40  time: 3; 
+SWAP q1: 22 q2: 31 qb1: 9 qb2: 15 init: 60  time: 2; 
+PS q1: 31 q2: 60 qb1: 9 qb2: 16 init: 67  time: 3; 
+SWAP q1: 21 q2: 31 qb1: 16 qb2: 9 init: 80  time: 2; 
+MIX q1: 31 qb1: 16 init: 85  time: 1; 
+
+Makespan 32: 79
+SWAP q1: 61 q2: 32 qb1: 38 qb2: 32 init: 8  time: 2; 
+SWAP q1: 70 q2: 32 qb1: 44 qb2: 38 init: 13  time: 2; 
+SWAP q1: 55 q2: 32 qb1: 50 qb2: 44 init: 27  time: 2; 
+SWAP q1: 50 q2: 32 qb1: 55 qb2: 50 init: 31  time: 2; 
+SWAP q1: 63 q2: 32 qb1: 62 qb2: 55 init: 33  time: 2; 
+SWAP q1: 45 q2: 32 qb1: 56 qb2: 62 init: 66  time: 2; 
+SWAP q1: 32 q2: 45 qb1: 56 qb2: 62 init: 71  time: 2; 
+PS q1: 70 q2: 32 qb1: 67 qb2: 62 init: 73  time: 3; 
+MIX q1: 32 qb1: 62 init: 78  time: 1; 
+
+Makespan 33: 85
+SWAP q1: 33 q2: 27 qb1: 33 qb2: 27 init: 2  time: 2; 
+PS q1: 15 q2: 33 qb1: 20 qb2: 27 init: 4  time: 3; 
+SWAP q1: 61 q2: 33 qb1: 32 qb2: 27 init: 10  time: 2; 
+SWAP q1: 39 q2: 33 qb1: 39 qb2: 32 init: 18  time: 2; 
+SWAP q1: 55 q2: 33 qb1: 44 qb2: 39 init: 29  time: 2; 
+SWAP q1: 45 q2: 33 qb1: 51 qb2: 44 init: 34  time: 2; 
+SWAP q1: 43 q2: 33 qb1: 56 qb2: 51 init: 36  time: 2; 
+SWAP q1: 59 q2: 33 qb1: 63 qb2: 56 init: 38  time: 2; 
+PS q1: 52 q2: 33 qb1: 57 qb2: 63 init: 73  time: 3; 
+SWAP q1: 52 q2: 33 qb1: 57 qb2: 63 init: 79  time: 2; 
+MIX q1: 33 qb1: 57 init: 84  time: 1; 
+
+Makespan 34: 85
+SWAP q1: 47 q2: 34 qb1: 41 qb2: 34 init: 2  time: 2; 
+SWAP q1: 47 q2: 34 qb1: 34 qb2: 41 init: 24  time: 2; 
+SWAP q1: 34 q2: 27 qb1: 34 qb2: 40 init: 34  time: 2; 
+PS q1: 34 q2: 43 qb1: 40 qb2: 45 init: 49  time: 3; 
+SWAP q1: 57 q2: 34 qb1: 46 qb2: 40 init: 64  time: 2; 
+SWAP q1: 34 q2: 43 qb1: 46 qb2: 52 init: 69  time: 2; 
+SWAP q1: 34 q2: 71 qb1: 52 qb2: 45 init: 77  time: 2; 
+PS q1: 34 q2: 26 qb1: 45 qb2: 39 init: 81  time: 3; 
+MIX q1: 34 qb1: 45 init: 84  time: 1; 
+
+Makespan 35: 81
+SWAP q1: 18 q2: 35 qb1: 30 qb2: 35 init: 11  time: 2; 
+PS q1: 61 q2: 35 qb1: 35 qb2: 30 init: 77  time: 3; 
+MIX q1: 35 qb1: 30 init: 80  time: 1; 
+
+Makespan 36: 0
+
+Makespan 37: 85
+SWAP q1: 37 q2: 20 qb1: 37 qb2: 31 init: 38  time: 2; 
+PS q1: 4 q2: 37 qb1: 26 qb2: 31 init: 45  time: 3; 
+SWAP q1: 49 q2: 37 qb1: 37 qb2: 31 init: 48  time: 2; 
+SWAP q1: 62 q2: 37 qb1: 43 qb2: 37 init: 55  time: 2; 
+SWAP q1: 59 q2: 37 qb1: 50 qb2: 43 init: 64  time: 2; 
+SWAP q1: 37 q2: 45 qb1: 50 qb2: 56 init: 76  time: 2; 
+PS q1: 52 q2: 37 qb1: 63 qb2: 56 init: 81  time: 3; 
+MIX q1: 37 qb1: 56 init: 84  time: 1; 
+
+Makespan 38: 65
+SWAP q1: 61 q2: 38 qb1: 43 qb2: 38 init: 6  time: 2; 
+SWAP q1: 38 q2: 70 qb1: 43 qb2: 38 init: 22  time: 2; 
+SWAP q1: 38 q2: 8 qb1: 38 qb2: 31 init: 25  time: 2; 
+SWAP q1: 38 q2: 31 qb1: 31 qb2: 25 init: 29  time: 2; 
+PS q1: 20 q2: 38 qb1: 31 qb2: 25 init: 33  time: 3; 
+PS q1: 3 q2: 38 qb1: 19 qb2: 25 init: 50  time: 3; 
+SWAP q1: 3 q2: 38 qb1: 19 qb2: 25 init: 60  time: 2; 
+SWAP q1: 25 q2: 38 qb1: 13 qb2: 19 init: 62  time: 2; 
+MIX q1: 38 qb1: 13 init: 64  time: 1; 
+
+Makespan 39: 87
+SWAP q1: 39 q2: 33 qb1: 39 qb2: 32 init: 18  time: 2; 
+SWAP q1: 39 q2: 26 qb1: 32 qb2: 26 init: 20  time: 2; 
+PS q1: 39 q2: 1 qb1: 26 qb2: 19 init: 22  time: 3; 
+SWAP q1: 20 q2: 39 qb1: 20 qb2: 26 init: 27  time: 2; 
+SWAP q1: 31 q2: 39 qb1: 26 qb2: 20 init: 36  time: 2; 
+SWAP q1: 4 q2: 39 qb1: 20 qb2: 26 init: 43  time: 2; 
+SWAP q1: 49 q2: 39 qb1: 26 qb2: 20 init: 55  time: 2; 
+SWAP q1: 39 q2: 3 qb1: 26 qb2: 31 init: 74  time: 2; 
+PS q1: 39 q2: 59 qb1: 31 qb2: 37 init: 76  time: 3; 
+SWAP q1: 58 q2: 39 qb1: 38 qb2: 31 init: 81  time: 2; 
+MIX q1: 39 qb1: 38 init: 86  time: 1; 
+
+Makespan 40: 71
+PS q1: 40 q2: 59 qb1: 40 qb2: 46 init: 9  time: 3; 
+PS q1: 40 q2: 45 qb1: 40 qb2: 45 init: 13  time: 3; 
+SWAP q1: 40 q2: 27 qb1: 40 qb2: 33 init: 16  time: 2; 
+PS q1: 40 q2: 16 qb1: 33 qb2: 28 init: 21  time: 3; 
+PS q1: 40 q2: 55 qb1: 33 qb2: 39 init: 31  time: 3; 
+SWAP q1: 55 q2: 40 qb1: 39 qb2: 33 init: 36  time: 2; 
+SWAP q1: 56 q2: 40 qb1: 45 qb2: 39 init: 43  time: 2; 
+SWAP q1: 43 q2: 40 qb1: 51 qb2: 45 init: 47  time: 2; 
+SWAP q1: 69 q2: 40 qb1: 57 qb2: 51 init: 55  time: 2; 
+SWAP q1: 58 q2: 40 qb1: 64 qb2: 57 init: 61  time: 2; 
+PS q1: 40 q2: 64 qb1: 64 qb2: 69 init: 65  time: 3; 
+SWAP q1: 52 q2: 40 qb1: 70 qb2: 64 init: 68  time: 2; 
+MIX q1: 40 qb1: 70 init: 70  time: 1; 
+
+Makespan 41: 51
+SWAP q1: 47 q2: 41 qb1: 47 qb2: 41 init: 0  time: 2; 
+SWAP q1: 42 q2: 41 qb1: 42 qb2: 47 init: 4  time: 2; 
+SWAP q1: 46 q2: 41 qb1: 47 qb2: 42 init: 18  time: 2; 
+SWAP q1: 60 q2: 41 qb1: 54 qb2: 47 init: 31  time: 2; 
+SWAP q1: 54 q2: 41 qb1: 60 qb2: 54 init: 40  time: 2; 
+SWAP q1: 53 q2: 41 qb1: 66 qb2: 60 init: 47  time: 2; 
+SWAP q1: 65 q2: 41 qb1: 72 qb2: 66 init: 49  time: 2; 
+
+Makespan 42: 81
+SWAP q1: 42 q2: 41 qb1: 42 qb2: 47 init: 4  time: 2; 
+SWAP q1: 42 q2: 46 qb1: 47 qb2: 53 init: 13  time: 2; 
+PS q1: 42 q2: 52 qb1: 53 qb2: 58 init: 15  time: 3; 
+SWAP q1: 42 q2: 57 qb1: 53 qb2: 46 init: 20  time: 2; 
+PS q1: 68 q2: 42 qb1: 52 qb2: 46 init: 29  time: 3; 
+SWAP q1: 18 q2: 42 qb1: 41 qb2: 46 init: 40  time: 2; 
+SWAP q1: 54 q2: 42 qb1: 47 qb2: 41 init: 49  time: 2; 
+SWAP q1: 27 q2: 42 qb1: 41 qb2: 47 init: 71  time: 2; 
+MIX q1: 42 qb1: 41 init: 80  time: 1; 
+
+Makespan 43: 80
+SWAP q1: 61 q2: 43 qb1: 50 qb2: 43 init: 4  time: 2; 
+SWAP q1: 43 q2: 50 qb1: 50 qb2: 55 init: 8  time: 2; 
+PS q1: 55 q2: 43 qb1: 61 qb2: 55 init: 10  time: 3; 
+SWAP q1: 55 q2: 43 qb1: 61 qb2: 55 init: 13  time: 2; 
+SWAP q1: 43 q2: 67 qb1: 61 qb2: 67 init: 15  time: 2; 
+SWAP q1: 43 q2: 62 qb1: 67 qb2: 62 init: 20  time: 2; 
+SWAP q1: 43 q2: 44 qb1: 62 qb2: 56 init: 22  time: 2; 
+SWAP q1: 43 q2: 33 qb1: 56 qb2: 51 init: 36  time: 2; 
+SWAP q1: 43 q2: 40 qb1: 51 qb2: 45 init: 47  time: 2; 
+PS q1: 34 q2: 43 qb1: 40 qb2: 45 init: 49  time: 3; 
+SWAP q1: 71 q2: 43 qb1: 52 qb2: 45 init: 59  time: 2; 
+SWAP q1: 34 q2: 43 qb1: 46 qb2: 52 init: 69  time: 2; 
+MIX q1: 43 qb1: 46 init: 79  time: 1; 
+
+Makespan 44: 80
+SWAP q1: 70 q2: 44 qb1: 51 qb2: 44 init: 11  time: 2; 
+SWAP q1: 56 q2: 44 qb1: 56 qb2: 51 init: 16  time: 2; 
+SWAP q1: 43 q2: 44 qb1: 62 qb2: 56 init: 22  time: 2; 
+SWAP q1: 44 q2: 63 qb1: 62 qb2: 68 init: 24  time: 2; 
+SWAP q1: 44 q2: 51 qb1: 68 qb2: 63 init: 27  time: 2; 
+SWAP q1: 44 q2: 69 qb1: 63 qb2: 69 init: 29  time: 2; 
+SWAP q1: 44 q2: 64 qb1: 69 qb2: 64 init: 35  time: 2; 
+SWAP q1: 44 q2: 58 qb1: 64 qb2: 70 init: 37  time: 2; 
+PS q1: 71 q2: 44 qb1: 65 qb2: 70 init: 39  time: 3; 
+SWAP q1: 44 q2: 52 qb1: 70 qb2: 65 init: 49  time: 2; 
+PS q1: 66 q2: 44 qb1: 71 qb2: 65 init: 51  time: 3; 
+SWAP q1: 44 q2: 48 qb1: 65 qb2: 59 init: 64  time: 2; 
+PS q1: 44 q2: 27 qb1: 59 qb2: 53 init: 75  time: 3; 
+MIX q1: 44 qb1: 59 init: 79  time: 1; 
+
+Makespan 45: 79
+PS q1: 40 q2: 45 qb1: 40 qb2: 45 init: 13  time: 3; 
+SWAP q1: 56 q2: 45 qb1: 51 qb2: 45 init: 20  time: 2; 
+SWAP q1: 45 q2: 33 qb1: 51 qb2: 44 init: 34  time: 2; 
+PS q1: 45 q2: 8 qb1: 44 qb2: 38 init: 40  time: 3; 
+SWAP q1: 50 q2: 45 qb1: 50 qb2: 44 init: 49  time: 2; 
+SWAP q1: 59 q2: 45 qb1: 56 qb2: 50 init: 61  time: 2; 
+SWAP q1: 45 q2: 32 qb1: 56 qb2: 62 init: 66  time: 2; 
+PS q1: 51 q2: 45 qb1: 68 qb2: 62 init: 68  time: 3; 
+SWAP q1: 32 q2: 45 qb1: 56 qb2: 62 init: 71  time: 2; 
+SWAP q1: 37 q2: 45 qb1: 50 qb2: 56 init: 76  time: 2; 
+MIX q1: 45 qb1: 50 init: 78  time: 1; 
+
+Makespan 46: 52
+PS q1: 57 q2: 46 qb1: 52 qb2: 46 init: 4  time: 3; 
+SWAP q1: 59 q2: 46 qb1: 53 qb2: 46 init: 7  time: 2; 
+SWAP q1: 42 q2: 46 qb1: 47 qb2: 53 init: 13  time: 2; 
+SWAP q1: 46 q2: 41 qb1: 47 qb2: 42 init: 18  time: 2; 
+SWAP q1: 46 q2: 18 qb1: 42 qb2: 35 init: 29  time: 2; 
+SWAP q1: 46 q2: 29 qb1: 35 qb2: 29 init: 31  time: 2; 
+SWAP q1: 46 q2: 11 qb1: 29 qb2: 22 init: 43  time: 2; 
+SWAP q1: 46 q2: 61 qb1: 22 qb2: 16 init: 45  time: 2; 
+SWAP q1: 46 q2: 24 qb1: 16 qb2: 9 init: 47  time: 2; 
+PS q1: 2 q2: 46 qb1: 3 qb2: 9 init: 49  time: 0; 
+SWAP q1: 22 q2: 46 qb1: 4 qb2: 9 init: 49  time: 2; 
+MIX q1: 46 qb1: 4 init: 51  time: 1; 
+
+Makespan 47: 56
+SWAP q1: 47 q2: 41 qb1: 47 qb2: 41 init: 0  time: 2; 
+SWAP q1: 47 q2: 34 qb1: 41 qb2: 34 init: 2  time: 2; 
+PS q1: 47 q2: 28 qb1: 34 qb2: 28 init: 4  time: 3; 
+SWAP q1: 47 q2: 34 qb1: 34 qb2: 41 init: 24  time: 2; 
+PS q1: 18 q2: 47 qb1: 35 qb2: 41 init: 26  time: 3; 
+SWAP q1: 18 q2: 47 qb1: 47 qb2: 41 init: 38  time: 2; 
+SWAP q1: 54 q2: 47 qb1: 54 qb2: 47 init: 45  time: 2; 
+SWAP q1: 53 q2: 47 qb1: 60 qb2: 54 init: 51  time: 2; 
+MIX q1: 47 qb1: 60 init: 55  time: 1; 
+
+Makespan 48: 66
+SWAP q1: 53 q2: 48 qb1: 54 qb2: 48 init: 53  time: 2; 
+SWAP q1: 65 q2: 48 qb1: 59 qb2: 54 init: 60  time: 2; 
+SWAP q1: 44 q2: 48 qb1: 65 qb2: 59 init: 64  time: 2; 
+
+Makespan 49: 84
+SWAP q1: 49 q2: 70 qb1: 49 qb2: 43 init: 29  time: 2; 
+SWAP q1: 49 q2: 20 qb1: 43 qb2: 37 init: 43  time: 2; 
+SWAP q1: 49 q2: 37 qb1: 37 qb2: 31 init: 48  time: 2; 
+SWAP q1: 49 q2: 4 qb1: 31 qb2: 26 init: 53  time: 2; 
+SWAP q1: 49 q2: 39 qb1: 26 qb2: 20 init: 55  time: 2; 
+PS q1: 7 q2: 49 qb1: 14 qb2: 20 init: 57  time: 3; 
+SWAP q1: 56 q2: 49 qb1: 27 qb2: 20 init: 62  time: 2; 
+SWAP q1: 49 q2: 15 qb1: 27 qb2: 21 init: 70  time: 2; 
+PS q1: 54 q2: 49 qb1: 28 qb2: 21 init: 72  time: 3; 
+PS q1: 60 q2: 49 qb1: 16 qb2: 21 init: 75  time: 3; 
+MIX q1: 49 qb1: 21 init: 83  time: 1; 
+
+Makespan 50: 70
+SWAP q1: 61 q2: 50 qb1: 55 qb2: 50 init: 2  time: 2; 
+SWAP q1: 43 q2: 50 qb1: 50 qb2: 55 init: 8  time: 2; 
+SWAP q1: 55 q2: 50 qb1: 55 qb2: 50 init: 18  time: 2; 
+SWAP q1: 50 q2: 32 qb1: 55 qb2: 50 init: 31  time: 2; 
+SWAP q1: 50 q2: 45 qb1: 50 qb2: 44 init: 49  time: 2; 
+SWAP q1: 50 q2: 16 qb1: 44 qb2: 39 init: 52  time: 2; 
+PS q1: 50 q2: 28 qb1: 39 qb2: 33 init: 54  time: 3; 
+SWAP q1: 26 q2: 50 qb1: 32 qb2: 39 init: 64  time: 2; 
+MIX q1: 50 qb1: 32 init: 69  time: 1; 
+
+Makespan 51: 77
+SWAP q1: 70 q2: 51 qb1: 57 qb2: 51 init: 9  time: 2; 
+SWAP q1: 68 q2: 51 qb1: 63 qb2: 57 init: 13  time: 2; 
+SWAP q1: 44 q2: 51 qb1: 68 qb2: 63 init: 27  time: 2; 
+PS q1: 51 q2: 45 qb1: 68 qb2: 62 init: 68  time: 3; 
+MIX q1: 51 qb1: 68 init: 76  time: 1; 
+
+Makespan 52: 86
+SWAP q1: 57 q2: 52 qb1: 57 qb2: 52 init: 0  time: 2; 
+SWAP q1: 70 q2: 52 qb1: 64 qb2: 57 init: 7  time: 2; 
+SWAP q1: 52 q2: 58 qb1: 64 qb2: 58 init: 11  time: 2; 
+PS q1: 42 q2: 52 qb1: 53 qb2: 58 init: 15  time: 3; 
+PS q1: 52 q2: 71 qb1: 58 qb2: 65 init: 32  time: 3; 
+SWAP q1: 71 q2: 52 qb1: 65 qb2: 58 init: 47  time: 2; 
+SWAP q1: 44 q2: 52 qb1: 70 qb2: 65 init: 49  time: 2; 
+SWAP q1: 52 q2: 40 qb1: 70 qb2: 64 init: 68  time: 2; 
+SWAP q1: 52 q2: 16 qb1: 64 qb2: 57 init: 71  time: 2; 
+PS q1: 52 q2: 33 qb1: 57 qb2: 63 init: 73  time: 3; 
+SWAP q1: 52 q2: 33 qb1: 57 qb2: 63 init: 79  time: 2; 
+PS q1: 52 q2: 37 qb1: 63 qb2: 56 init: 81  time: 3; 
+MIX q1: 52 qb1: 63 init: 85  time: 1; 
+
+Makespan 53: 67
+SWAP q1: 59 q2: 53 qb1: 59 qb2: 53 init: 2  time: 2; 
+SWAP q1: 65 q2: 53 qb1: 65 qb2: 59 init: 4  time: 2; 
+SWAP q1: 66 q2: 53 qb1: 59 qb2: 65 init: 22  time: 2; 
+SWAP q1: 72 q2: 53 qb1: 66 qb2: 59 init: 29  time: 2; 
+SWAP q1: 65 q2: 53 qb1: 72 qb2: 66 init: 31  time: 2; 
+SWAP q1: 53 q2: 65 qb1: 72 qb2: 66 init: 45  time: 2; 
+SWAP q1: 53 q2: 41 qb1: 66 qb2: 60 init: 47  time: 2; 
+SWAP q1: 53 q2: 47 qb1: 60 qb2: 54 init: 51  time: 2; 
+SWAP q1: 53 q2: 48 qb1: 54 qb2: 48 init: 53  time: 2; 
+PS q1: 53 q2: 11 qb1: 48 qb2: 42 init: 57  time: 3; 
+SWAP q1: 65 q2: 53 qb1: 54 qb2: 48 init: 62  time: 2; 
+MIX q1: 53 qb1: 54 init: 66  time: 1; 
+
+Makespan 54: 81
+SWAP q1: 60 q2: 54 qb1: 60 qb2: 54 init: 16  time: 2; 
+SWAP q1: 54 q2: 41 qb1: 60 qb2: 54 init: 40  time: 2; 
+SWAP q1: 54 q2: 47 qb1: 54 qb2: 47 init: 45  time: 2; 
+SWAP q1: 54 q2: 42 qb1: 47 qb2: 41 init: 49  time: 2; 
+SWAP q1: 54 q2: 27 qb1: 41 qb2: 34 init: 52  time: 2; 
+SWAP q1: 54 q2: 24 qb1: 34 qb2: 28 init: 62  time: 2; 
+PS q1: 54 q2: 49 qb1: 28 qb2: 21 init: 72  time: 3; 
+MIX q1: 54 qb1: 28 init: 80  time: 1; 
+
+Makespan 55: 77
+SWAP q1: 61 q2: 55 qb1: 61 qb2: 55 init: 0  time: 2; 
+PS q1: 55 q2: 43 qb1: 61 qb2: 55 init: 10  time: 3; 
+SWAP q1: 55 q2: 43 qb1: 61 qb2: 55 init: 13  time: 2; 
+SWAP q1: 55 q2: 50 qb1: 55 qb2: 50 init: 18  time: 2; 
+SWAP q1: 55 q2: 32 qb1: 50 qb2: 44 init: 27  time: 2; 
+SWAP q1: 55 q2: 33 qb1: 44 qb2: 39 init: 29  time: 2; 
+PS q1: 40 q2: 55 qb1: 33 qb2: 39 init: 31  time: 3; 
+SWAP q1: 55 q2: 40 qb1: 39 qb2: 33 init: 36  time: 2; 
+SWAP q1: 55 q2: 16 qb1: 33 qb2: 28 init: 38  time: 2; 
+PS q1: 11 q2: 55 qb1: 22 qb2: 28 init: 40  time: 3; 
+SWAP q1: 55 q2: 24 qb1: 28 qb2: 22 init: 57  time: 2; 
+PS q1: 6 q2: 55 qb1: 17 qb2: 22 init: 59  time: 3; 
+SWAP q1: 55 q2: 6 qb1: 22 qb2: 17 init: 70  time: 2; 
+PS q1: 12 q2: 55 qb1: 11 qb2: 17 init: 72  time: 3; 
+MIX q1: 55 qb1: 17 init: 76  time: 1; 
+
+Makespan 56: 70
+SWAP q1: 56 q2: 44 qb1: 56 qb2: 51 init: 16  time: 2; 
+SWAP q1: 56 q2: 45 qb1: 51 qb2: 45 init: 20  time: 2; 
+PS q1: 59 q2: 56 qb1: 52 qb2: 45 init: 22  time: 3; 
+SWAP q1: 56 q2: 40 qb1: 45 qb2: 39 init: 43  time: 2; 
+SWAP q1: 56 q2: 16 qb1: 39 qb2: 33 init: 45  time: 2; 
+SWAP q1: 56 q2: 28 qb1: 33 qb2: 27 init: 47  time: 2; 
+PS q1: 15 q2: 56 qb1: 21 qb2: 27 init: 49  time: 3; 
+SWAP q1: 56 q2: 49 qb1: 27 qb2: 20 init: 62  time: 2; 
+PS q1: 56 q2: 22 qb1: 20 qb2: 15 init: 64  time: 3; 
+SWAP q1: 7 q2: 56 qb1: 14 qb2: 20 init: 67  time: 2; 
+MIX q1: 56 qb1: 14 init: 69  time: 1; 
+
+Makespan 57: 86
+SWAP q1: 57 q2: 52 qb1: 57 qb2: 52 init: 0  time: 2; 
+PS q1: 57 q2: 46 qb1: 52 qb2: 46 init: 4  time: 3; 
+SWAP q1: 59 q2: 57 qb1: 46 qb2: 52 init: 18  time: 2; 
+SWAP q1: 42 q2: 57 qb1: 53 qb2: 46 init: 20  time: 2; 
+PS q1: 57 q2: 72 qb1: 53 qb2: 59 init: 35  time: 3; 
+SWAP q1: 57 q2: 68 qb1: 53 qb2: 46 init: 55  time: 2; 
+SWAP q1: 57 q2: 34 qb1: 46 qb2: 40 init: 64  time: 2; 
+SWAP q1: 57 q2: 28 qb1: 40 qb2: 33 init: 75  time: 2; 
+SWAP q1: 57 q2: 15 qb1: 33 qb2: 27 init: 78  time: 2; 
+PS q1: 57 q2: 7 qb1: 27 qb2: 20 init: 80  time: 3; 
+MIX q1: 57 qb1: 27 init: 85  time: 1; 
+
+Makespan 58: 88
+SWAP q1: 52 q2: 58 qb1: 64 qb2: 58 init: 11  time: 2; 
+SWAP q1: 58 q2: 64 qb1: 64 qb2: 70 init: 18  time: 2; 
+PS q1: 66 q2: 58 qb1: 65 qb2: 70 init: 24  time: 3; 
+SWAP q1: 44 q2: 58 qb1: 64 qb2: 70 init: 37  time: 2; 
+SWAP q1: 58 q2: 40 qb1: 64 qb2: 57 init: 61  time: 2; 
+SWAP q1: 58 q2: 16 qb1: 57 qb2: 51 init: 63  time: 2; 
+SWAP q1: 58 q2: 8 qb1: 51 qb2: 44 init: 69  time: 2; 
+PS q1: 58 q2: 26 qb1: 44 qb2: 39 init: 71  time: 3; 
+SWAP q1: 58 q2: 4 qb1: 44 qb2: 38 init: 79  time: 2; 
+SWAP q1: 58 q2: 39 qb1: 38 qb2: 31 init: 81  time: 2; 
+PS q1: 25 q2: 58 qb1: 25 qb2: 31 init: 83  time: 3; 
+MIX q1: 58 qb1: 31 init: 87  time: 1; 
+
+Makespan 59: 80
+SWAP q1: 59 q2: 53 qb1: 59 qb2: 53 init: 2  time: 2; 
+SWAP q1: 59 q2: 46 qb1: 53 qb2: 46 init: 7  time: 2; 
+PS q1: 40 q2: 59 qb1: 40 qb2: 46 init: 9  time: 3; 
+SWAP q1: 59 q2: 57 qb1: 46 qb2: 52 init: 18  time: 2; 
+PS q1: 59 q2: 56 qb1: 52 qb2: 45 init: 22  time: 3; 
+SWAP q1: 68 q2: 59 qb1: 57 qb2: 52 init: 25  time: 2; 
+SWAP q1: 69 q2: 59 qb1: 63 qb2: 57 init: 32  time: 2; 
+SWAP q1: 59 q2: 33 qb1: 63 qb2: 56 init: 38  time: 2; 
+SWAP q1: 59 q2: 45 qb1: 56 qb2: 50 init: 61  time: 2; 
+SWAP q1: 59 q2: 37 qb1: 50 qb2: 43 init: 64  time: 2; 
+SWAP q1: 59 q2: 62 qb1: 43 qb2: 37 init: 72  time: 2; 
+PS q1: 39 q2: 59 qb1: 31 qb2: 37 init: 76  time: 3; 
+MIX q1: 59 qb1: 37 init: 79  time: 1; 
+
+Makespan 60: 83
+PS q1: 65 q2: 60 qb1: 66 qb2: 60 init: 11  time: 3; 
+SWAP q1: 60 q2: 54 qb1: 60 qb2: 54 init: 16  time: 2; 
+SWAP q1: 60 q2: 41 qb1: 54 qb2: 47 init: 31  time: 2; 
+SWAP q1: 60 q2: 18 qb1: 47 qb2: 42 init: 33  time: 2; 
+SWAP q1: 60 q2: 29 qb1: 42 qb2: 35 init: 35  time: 2; 
+SWAP q1: 60 q2: 11 qb1: 35 qb2: 29 init: 47  time: 2; 
+SWAP q1: 60 q2: 61 qb1: 29 qb2: 22 init: 49  time: 2; 
+SWAP q1: 60 q2: 24 qb1: 22 qb2: 16 init: 52  time: 2; 
+PS q1: 60 q2: 22 qb1: 16 qb2: 9 init: 54  time: 3; 
+PS q1: 31 q2: 60 qb1: 9 qb2: 16 init: 67  time: 3; 
+PS q1: 60 q2: 49 qb1: 16 qb2: 21 init: 75  time: 3; 
+SWAP q1: 21 q2: 60 qb1: 10 qb2: 16 init: 78  time: 2; 
+MIX q1: 60 qb1: 10 init: 82  time: 1; 
+
+Makespan 61: 82
+SWAP q1: 61 q2: 55 qb1: 61 qb2: 55 init: 0  time: 2; 
+SWAP q1: 61 q2: 50 qb1: 55 qb2: 50 init: 2  time: 2; 
+SWAP q1: 61 q2: 43 qb1: 50 qb2: 43 init: 4  time: 2; 
+SWAP q1: 61 q2: 38 qb1: 43 qb2: 38 init: 6  time: 2; 
+SWAP q1: 61 q2: 32 qb1: 38 qb2: 32 init: 8  time: 2; 
+SWAP q1: 61 q2: 33 qb1: 32 qb2: 27 init: 10  time: 2; 
+PS q1: 61 q2: 16 qb1: 27 qb2: 21 init: 12  time: 3; 
+SWAP q1: 61 q2: 28 qb1: 27 qb2: 21 init: 29  time: 2; 
+PS q1: 61 q2: 24 qb1: 21 qb2: 16 init: 31  time: 3; 
+SWAP q1: 15 q2: 61 qb1: 16 qb2: 21 init: 36  time: 2; 
+SWAP q1: 46 q2: 61 qb1: 22 qb2: 16 init: 45  time: 2; 
+SWAP q1: 60 q2: 61 qb1: 29 qb2: 22 init: 49  time: 2; 
+SWAP q1: 61 q2: 29 qb1: 29 qb2: 35 init: 64  time: 2; 
+SWAP q1: 61 q2: 11 qb1: 35 qb2: 42 init: 66  time: 2; 
+PS q1: 61 q2: 65 qb1: 42 qb2: 48 init: 68  time: 3; 
+SWAP q1: 61 q2: 11 qb1: 42 qb2: 35 init: 75  time: 2; 
+PS q1: 61 q2: 35 qb1: 35 qb2: 30 init: 77  time: 3; 
+MIX q1: 61 qb1: 35 init: 81  time: 1; 
+
+Makespan 62: 75
+SWAP q1: 43 q2: 62 qb1: 67 qb2: 62 init: 20  time: 2; 
+SWAP q1: 62 q2: 67 qb1: 67 qb2: 61 init: 26  time: 2; 
+SWAP q1: 62 q2: 70 qb1: 61 qb2: 55 init: 37  time: 2; 
+SWAP q1: 62 q2: 63 qb1: 55 qb2: 49 init: 51  time: 2; 
+SWAP q1: 62 q2: 20 qb1: 49 qb2: 43 init: 53  time: 2; 
+SWAP q1: 62 q2: 37 qb1: 43 qb2: 37 init: 55  time: 2; 
+PS q1: 62 q2: 3 qb1: 37 qb2: 31 init: 69  time: 3; 
+SWAP q1: 59 q2: 62 qb1: 43 qb2: 37 init: 72  time: 2; 
+MIX q1: 62 qb1: 43 init: 74  time: 1; 
+
+Makespan 63: 56
+SWAP q1: 68 q2: 63 qb1: 68 qb2: 63 init: 2  time: 2; 
+SWAP q1: 44 q2: 63 qb1: 62 qb2: 68 init: 24  time: 2; 
+SWAP q1: 63 q2: 32 qb1: 62 qb2: 55 init: 33  time: 2; 
+SWAP q1: 63 q2: 70 qb1: 55 qb2: 49 init: 35  time: 2; 
+PS q1: 63 q2: 20 qb1: 49 qb2: 43 init: 45  time: 3; 
+SWAP q1: 62 q2: 63 qb1: 55 qb2: 49 init: 51  time: 2; 
+MIX q1: 63 qb1: 55 init: 55  time: 1; 
+
+Makespan 64: 71
+SWAP q1: 70 q2: 64 qb1: 70 qb2: 64 init: 2  time: 2; 
+SWAP q1: 58 q2: 64 qb1: 64 qb2: 70 init: 18  time: 2; 
+SWAP q1: 44 q2: 64 qb1: 69 qb2: 64 init: 35  time: 2; 
+PS q1: 40 q2: 64 qb1: 64 qb2: 69 init: 65  time: 3; 
+MIX q1: 64 qb1: 69 init: 70  time: 1; 
+
+Makespan 65: 72
+SWAP q1: 65 q2: 53 qb1: 65 qb2: 59 init: 4  time: 2; 
+SWAP q1: 65 q2: 66 qb1: 59 qb2: 66 init: 9  time: 2; 
+PS q1: 65 q2: 60 qb1: 66 qb2: 60 init: 11  time: 3; 
+SWAP q1: 72 q2: 65 qb1: 72 qb2: 66 init: 14  time: 2; 
+SWAP q1: 65 q2: 53 qb1: 72 qb2: 66 init: 31  time: 2; 
+PS q1: 65 q2: 72 qb1: 66 qb2: 59 init: 42  time: 3; 
+SWAP q1: 53 q2: 65 qb1: 72 qb2: 66 init: 45  time: 2; 
+SWAP q1: 65 q2: 41 qb1: 72 qb2: 66 init: 49  time: 2; 
+SWAP q1: 65 q2: 72 qb1: 66 qb2: 59 init: 57  time: 2; 
+SWAP q1: 65 q2: 48 qb1: 59 qb2: 54 init: 60  time: 2; 
+SWAP q1: 65 q2: 53 qb1: 54 qb2: 48 init: 62  time: 2; 
+PS q1: 61 q2: 65 qb1: 42 qb2: 48 init: 68  time: 3; 
+MIX q1: 65 qb1: 48 init: 71  time: 1; 
+
+Makespan 66: 55
+SWAP q1: 65 q2: 66 qb1: 59 qb2: 66 init: 9  time: 2; 
+SWAP q1: 66 q2: 53 qb1: 59 qb2: 65 init: 22  time: 2; 
+PS q1: 66 q2: 58 qb1: 65 qb2: 70 init: 24  time: 3; 
+SWAP q1: 71 q2: 66 qb1: 71 qb2: 65 init: 27  time: 2; 
+PS q1: 66 q2: 44 qb1: 71 qb2: 65 init: 51  time: 3; 
+MIX q1: 66 qb1: 71 init: 54  time: 1; 
+
+Makespan 67: 41
+SWAP q1: 43 q2: 67 qb1: 61 qb2: 67 init: 15  time: 2; 
+SWAP q1: 62 q2: 67 qb1: 67 qb2: 61 init: 26  time: 2; 
+SWAP q1: 70 q2: 67 qb1: 61 qb2: 67 init: 39  time: 2; 
+
+Makespan 68: 80
+SWAP q1: 68 q2: 63 qb1: 68 qb2: 63 init: 2  time: 2; 
+SWAP q1: 68 q2: 51 qb1: 63 qb2: 57 init: 13  time: 2; 
+SWAP q1: 68 q2: 59 qb1: 57 qb2: 52 init: 25  time: 2; 
+PS q1: 68 q2: 42 qb1: 52 qb2: 46 init: 29  time: 3; 
+SWAP q1: 18 q2: 68 qb1: 46 qb2: 52 init: 45  time: 2; 
+SWAP q1: 57 q2: 68 qb1: 53 qb2: 46 init: 55  time: 2; 
+SWAP q1: 27 q2: 68 qb1: 47 qb2: 53 init: 73  time: 2; 
+MIX q1: 68 qb1: 47 init: 79  time: 1; 
+
+Makespan 69: 77
+SWAP q1: 44 q2: 69 qb1: 63 qb2: 69 init: 29  time: 2; 
+SWAP q1: 69 q2: 59 qb1: 63 qb2: 57 init: 32  time: 2; 
+PS q1: 18 q2: 69 qb1: 52 qb2: 57 init: 52  time: 3; 
+SWAP q1: 69 q2: 40 qb1: 57 qb2: 51 init: 55  time: 2; 
+SWAP q1: 69 q2: 16 qb1: 51 qb2: 44 init: 57  time: 2; 
+SWAP q1: 69 q2: 8 qb1: 44 qb2: 38 init: 59  time: 2; 
+SWAP q1: 69 q2: 4 qb1: 38 qb2: 31 init: 62  time: 2; 
+PS q1: 3 q2: 69 qb1: 25 qb2: 31 init: 64  time: 3; 
+SWAP q1: 3 q2: 69 qb1: 25 qb2: 31 init: 67  time: 2; 
+SWAP q1: 25 q2: 69 qb1: 19 qb2: 25 init: 72  time: 2; 
+MIX q1: 69 qb1: 19 init: 76  time: 1; 
+
+Makespan 70: 77
+SWAP q1: 70 q2: 64 qb1: 70 qb2: 64 init: 2  time: 2; 
+SWAP q1: 70 q2: 52 qb1: 64 qb2: 57 init: 7  time: 2; 
+SWAP q1: 70 q2: 51 qb1: 57 qb2: 51 init: 9  time: 2; 
+SWAP q1: 70 q2: 44 qb1: 51 qb2: 44 init: 11  time: 2; 
+SWAP q1: 70 q2: 32 qb1: 44 qb2: 38 init: 13  time: 2; 
+PS q1: 70 q2: 8 qb1: 38 qb2: 31 init: 15  time: 3; 
+SWAP q1: 38 q2: 70 qb1: 43 qb2: 38 init: 22  time: 2; 
+SWAP q1: 49 q2: 70 qb1: 49 qb2: 43 init: 29  time: 2; 
+SWAP q1: 63 q2: 70 qb1: 55 qb2: 49 init: 35  time: 2; 
+SWAP q1: 62 q2: 70 qb1: 61 qb2: 55 init: 37  time: 2; 
+SWAP q1: 70 q2: 67 qb1: 61 qb2: 67 init: 39  time: 2; 
+PS q1: 70 q2: 32 qb1: 67 qb2: 62 init: 73  time: 3; 
+MIX q1: 70 qb1: 67 init: 76  time: 1; 
+
+Makespan 71: 86
+SWAP q1: 71 q2: 66 qb1: 71 qb2: 65 init: 27  time: 2; 
+PS q1: 52 q2: 71 qb1: 58 qb2: 65 init: 32  time: 3; 
+PS q1: 71 q2: 44 qb1: 65 qb2: 70 init: 39  time: 3; 
+SWAP q1: 71 q2: 52 qb1: 65 qb2: 58 init: 47  time: 2; 
+SWAP q1: 71 q2: 18 qb1: 58 qb2: 52 init: 57  time: 2; 
+SWAP q1: 71 q2: 43 qb1: 52 qb2: 45 init: 59  time: 2; 
+PS q1: 71 q2: 26 qb1: 45 qb2: 39 init: 66  time: 3; 
+SWAP q1: 34 q2: 71 qb1: 52 qb2: 45 init: 77  time: 2; 
+MIX q1: 71 qb1: 52 init: 85  time: 1; 
+
+Makespan 72: 60
+SWAP q1: 72 q2: 65 qb1: 72 qb2: 66 init: 14  time: 2; 
+SWAP q1: 72 q2: 53 qb1: 66 qb2: 59 init: 29  time: 2; 
+PS q1: 57 q2: 72 qb1: 53 qb2: 59 init: 35  time: 3; 
+PS q1: 65 q2: 72 qb1: 66 qb2: 59 init: 42  time: 3; 
+SWAP q1: 65 q2: 72 qb1: 66 qb2: 59 init: 57  time: 2; 
+MIX q1: 72 qb1: 66 init: 59  time: 1; 
