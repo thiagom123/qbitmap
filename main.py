@@ -33,3 +33,5 @@ experiment = QCCP(graph,
                   r = 3)
 
 schedule = experiment.get_machine_schedule()
+
+print(f'final schedule: {schedule}')
