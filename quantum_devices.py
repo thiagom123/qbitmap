@@ -2,9 +2,16 @@ import networkx as nx
 
 
 def QuantumDevices():
+
+    QM_8q = nx.Graph()
     IBM_27q = nx.Graph()
     IBM_127q = nx.Graph()
     IBM_133q = nx.Graph()
+
+    nodes8q = range(0, 8)
+    QM_8q.add_nodes_from(nodes8q)
+    edges8q = [(0, 1), (1, 2), (0, 3), (3, 5), (5, 6), (6, 7), (4, 7), (2, 4)]
+    QM_8q.add_edges_from(edges8q)
 
     nodes = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]
     edges = [(0,1),(1,2),(1,4),(2,3),(3,5),(4,7),(5,8),
@@ -17,6 +24,7 @@ def QuantumDevices():
     IBM_27q.add_edges_from(edges)
 
     chips = {
+        'QM8q' : QM_8q,
         'IBM27q' : IBM_27q
     }
 
