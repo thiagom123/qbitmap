@@ -249,11 +249,6 @@ class QAOAmaxcut(ElementwiseProblem):
         #print("times", node_times)
         return
     
-    #def _add_mix(self):
-        #print(self.node_time)
-    #    node_times = [x+time_mix for x in node_times]
-        #self.last_gate = ['mix' for x in self.last_gate]
-    #    return
     
     def _add_mix_new(self, mix_gates, ch1, k, node_times, last_gates):
         '''

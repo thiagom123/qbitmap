@@ -1,5 +1,7 @@
 from pymoo.algorithms.soo.nonconvex.ga import GA
 from pymoo.optimize import minimize
+from pymoo.termination.ftol import SingleObjectiveSpaceTermination
+from pymoo.termination.robust import RobustTermination
 import networkx as nx
 from quantum_devices import QuantumDevices
 from QAOAproblems import QAOAmaxcut
@@ -18,7 +20,7 @@ class QCCP:
         run: (bool) automatically runs QCCP instance and saves a QM schedule
     '''
 
-    def __init__(self, graph, problem, algorithm, r = 1, w = 0, run = False):
+    def __init__(self, graph, problem, algorithm, r = 1, w = 0, run = False, n_gen_stale=200):
 
         # Incorporate declared variables
         self.graph = graph
@@ -26,6 +28,8 @@ class QCCP:
         self.algorithm = algorithm
         self.r = r
         self.w = w
+        self.termination = RobustTermination(SingleObjectiveSpaceTermination(tol=0.005, n_skip=5), period=n_gen_stale)
+        
 
         if run == True:
             self.schedule = self.get_machine_schedule()
@@ -44,7 +48,7 @@ class QCCP:
             print("round ", round)
             #print("current times: ", self.problem.initial_node_times) 
 
-            self.SGr = minimize(self.problem, self.algorithm)
+            self.SGr = minimize(self.problem, self.algorithm, termination=self.termination)
             
 
             # save partial results
